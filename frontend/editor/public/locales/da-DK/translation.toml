@@ -2933,12 +2933,16 @@ text = "For at gøre disse tilladelser uændrerlige skal du bruge værktøjet Ti
 [chat.actions]
 copy = "Kopiér besked"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Stirling-agentindstillinger"
+assistant = "AI Assistant"
 clearChat = "Ryd chat"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "Fortsæt"
 copied = "Kopieret!"
 copy = "Kopiér"
 done = "Færdig"
+enterValue = "Enter value"
 error = "Fejl"
 expand = "Udvid"
 loading = "Indlæser..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "Søg..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "Redigér"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "Alt gemt"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "Kunne ikke udtrække CSV"
 extractXlsxError = "Kunne ikke udtrække XLSX"
+filled = "filled"
 flattenAfterFilling = "Fladgør efter udfyldning"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "obl"
 requiredFieldsError = "Udfyld alle obligatoriske felter"
 rescanFields = "Scan felter igen"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "Følsom — adgang påkrævet"
 
 [portal.documents.table.columns]
 action = "Pipeline / handling"
+actions = "Actions"
 document = "Dokument"
 product = "Produkt"
 status = "Status"
@@ -7275,6 +7290,41 @@ running = "Kører"
 description = "Denne visning ramte en uventet fejl. Prøv igen, eller vælg en anden sektion i sidebjælken."
 retry = "Prøv igen"
 title = "Noget gik galt på denne side"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "Tilbage"
@@ -7786,7 +7836,6 @@ title = "Pipelines"
 newPipeline = "Ny pipeline"
 
 [portal.pipelines.builder]
-addStep = "Tilføj værktøj"
 back = "Tilbage til pipelines"
 cannotFollow = "Kan ikke tage {{produced}}"
 chooseAccount = "Vælg en konto"
@@ -7799,23 +7848,23 @@ inputs = "Input"
 inputSource = "Inputkilde"
 inputTrigger = "Trigger"
 keepEditing = "Fortsæt redigering"
+moreActions = "More actions"
 needsConfiguring = "Skal opsættes"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "Kræver en uploadet fil"
-noSources = "Ingen kilder er forbundet endnu. Opret en for at bruge den som input."
 noToolMatches = "Ingen værktøjer matcher din søgning."
-pipelineSettings = "Pipelineindstillinger"
 searchTools = "Søg i værktøjer"
-selectToolBody = "Tilføj et værktøj for at bygge din pipeline."
-selectToolTitle = "Ingen værktøjer endnu"
 sendToSystem = "Send til et andet system"
 stepsIncompatible = "Disse trin kan ikke køre på det, deres forrige trin producerer: {{tools}}."
 stepsNeedSetup = "Disse trin skal stadig opsættes før lagring: {{tools}}."
-toolSettings = "Værktøjsindstillinger"
+testRun = "Test with a file"
 unknownStep = "Ukendt operation, bevaret som den er."
 unsavedBody = "Du har ændringer, der ikke er gemt. Gem dem, før du forlader siden, eller kassér dem?"
 unsavedTitle = "Ikke-gemte ændringer"
 uploadUnsupported = "Uploadede filer understøttes endnu ikke i pipelines, så disse trin kan ikke gemmes: {{tools}}."
 usesDefaults = "Kører med standardindstillinger"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "Kombinerer alle filer fra det forrige trin"
@@ -7828,29 +7877,34 @@ undeclared-operation = "Kan ikke kontrollere, hvad dette trin accepterer"
 [portal.pipelines.composer]
 addTool = "Tilføj værktøj"
 cancel = "Annuller"
-chainEmpty = "Tilføj et værktøj for at begynde at bygge din pipeline."
 create = "Opret pipeline"
 editingUnsupported = "Visning af disse værktøjsparametre til redigering understøttes endnu ikke."
-moveDown = "Flyt ned"
-moveUp = "Flyt op"
+editSource = "Edit source"
 name = "Navn"
 namePlaceholder = "f.eks. Redaction sweep"
 noToolSettings = "Dette værktøj har ingen konfigurerbare indstillinger."
-operations_one = "Operation ({{count}})"
-operations_other = "Operationer ({{count}})"
 output = "Output"
-removeStep = "Fjern operation"
 save = "Gem ændringer"
 scheduleEvery = "Kør hver"
-sources = "Kilder"
-sourcesLoading = "Indlæser kilder..."
 trigger = "Trigger"
 triggerManual = "Kun manuel"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "dage"
 hours = "timer"
 minutes = "minutter"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "Slet \"{{name}}\"? Dette kan ikke fortrydes."
@@ -7868,6 +7922,37 @@ action = "Opret en pipeline"
 connectSource = "Forbind en kilde"
 description = "Opret din første pipeline: vælg de kilder, den kører over, kæd operationerne sammen, og vælg, hvor output skal placeres."
 title = "Ingen pipelines endnu"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "Aktive"
@@ -7894,6 +7979,7 @@ paused = "Sat på pause"
 
 [portal.pipelines.table]
 name = "Pipeline"
+open = "Open"
 sources = "Kilder"
 status = "Status"
 steps = "Trin"
@@ -8785,6 +8871,7 @@ unused = "Ubrugt"
 
 [portal.sources.table]
 documents = "Dokumenter"
+open = "Open"
 source = "Kilde"
 status = "Status"
 usedBy = "Politikker"
@@ -10130,6 +10217,7 @@ last = "Sidste side"
 maintainRatio = "Skift bevarelse af billedforhold"
 next = "Næste side"
 noSavedSigs = "Ingen Gemte Signaturer Fundet"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "Personlige Signaturer"
 previous = "Forrige side"
 redo = "Gentag"
@@ -10823,6 +10911,9 @@ pageFormatting = "Sideformatering"
 removal = "Fjernelse"
 signing = "Signering"
 verification = "Verifikation"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "Ingen værktøjer fundet"

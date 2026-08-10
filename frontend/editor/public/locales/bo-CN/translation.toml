@@ -2933,12 +2933,16 @@ text = "ཆོག་མཆན་འདི་དག་འགྱུར་བ་མ
 [chat.actions]
 copy = "འཕྲིན་དོན་འདྲ་བཤུས"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Stirling agent འདེམས་ཚན"
+assistant = "AI Assistant"
 clearChat = "གླེང་མོལ་བཤོལ"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "མུ་མཐུད"
 copied = "འདྲ་བཤུས་བྱས།"
 copy = "འདྲ་བཤུས།"
 done = "བགྱིས་པ"
+enterValue = "Enter value"
 error = "ནོར་འཁྲུལ"
 expand = "རྒྱ་སྐྱེད་གཏོང"
 loading = "ཁུར་པོ།"
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "འཚོལ..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "ཞུན་དག"
@@ -4241,9 +4250,14 @@ issues = "གྷི་ཊི་ཧབ།"
 
 [formFill]
 allSaved = "ཚང་མ་ཉར་ཚགས་བྱས་ཟིན"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "CSV ཕྱིར་འདོན་མ་ཐུབ"
 extractXlsxError = "XLSX ཕྱིར་འདོན་མ་ཐུབ"
+filled = "filled"
 flattenAfterFilling = "བཀངས་རྗེས་རྡོག་བཟོ"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "དགོས"
 requiredFieldsError = "ངེས་པར་དགོས་པའི་ས་སྒོ་ཚང་མ་སྐོང་རོགས"
 rescanFields = "ས་ཁོངས་བསྐྱར་ཞིབ"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "ཚོར་སླ — ཐོབ་དབང་དགོས"
 
 [portal.documents.table.columns]
 action = "Pipeline / བྱ་སྤྱོད"
+actions = "Actions"
 document = "ཡིག་ཆ"
 product = "ཐོན་རྫས"
 status = "གནས་ཚུལ"
@@ -7275,6 +7290,41 @@ running = "འཁོར་སྐྱོད་བཞིན"
 description = "མཐོང་ངོས་འདིར་མ་བསམ་པའི་ནོར་འཁྲུལ་ཞིག་བྱུང་། ཡང་བསྐྱར་ཚོད་ལྟ་བྱོས། ཡང་ན་ཟུར་གྱི་དཀར་ཆག་ནས་སྡེ་ཚན་གཞན་ཞིག་འདེམས།"
 retry = "ཡང་བསྐྱར་ཚོད་ལྟ་བྱོས"
 title = "ཤོག་ངོས་འདིར་གནད་དོན་ཞིག་བྱུང་།"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "ཕྱིར་ལོག"
@@ -7786,7 +7836,6 @@ title = "ལས་རིམ་རྒྱུན"
 newPipeline = "ལས་རིམ་རྒྱུན་གསར་པ"
 
 [portal.pipelines.builder]
-addStep = "ལག་ཆ་ཁ་སྣོན"
 back = "ལས་རིམ་རྒྱུན་ལ་ཕྱིར་ལོག"
 cannotFollow = "{{produced}} ལེན་མི་ཐུབ"
 chooseAccount = "རྩིས་ཐོ་ཞིག་འདེམས"
@@ -7799,23 +7848,23 @@ inputs = "ནང་འཇུག"
 inputSource = "ནང་འཇུག་ཁུངས"
 inputTrigger = "སྐུལ་རྐྱེན"
 keepEditing = "རྩོམ་སྒྲིག་མུ་མཐུད"
+moreActions = "More actions"
 needsConfiguring = "སྒྲིག་སྦྱོར་དགོས"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "ཡར་སྤྲོད་བྱས་པའི་ཡིག་ཆ་དགོས"
-noSources = "ད་དུང་ཁུངས་གང་ཡང་འབྲེལ་མཐུད་མ་བྱས། དེ་ནང་འཇུག་ལ་སྤྱོད་ཕྱིར་གཅིག་བཟོས།"
 noToolMatches = "ཁྱེད་ཀྱི་འཚོལ་བཤེར་དང་མཐུན་པའི་ལག་ཆ་མེད།"
-pipelineSettings = "ལས་རིམ་རྒྱུན་སྒྲིག་འགོད"
 searchTools = "ལག་ཆ་འཚོལ"
-selectToolBody = "ཁྱེད་ཀྱི་ལས་རིམ་རྒྱུན་བཟོ་ཕྱིར་ལག་ཆ་ཞིག་ཁ་སྣོན།"
-selectToolTitle = "ད་དུང་ལག་ཆ་མེད"
 sendToSystem = "མ་ལག་གཞན་ཞིག་ལ་སྐུར"
 stepsIncompatible = "གོམ་པ་འདི་དག་དེའི་གོམ་པ་སྔོན་མས་བཟོས་པའི་ཐོན་འབྲས་སྟེང་འཁོར་མི་ཐུབ། {{tools}}"
 stepsNeedSetup = "གོམ་པ་འདི་དག་ཉར་ཚགས་མ་བྱས་གོང་ད་དུང་སྒྲིག་སྦྱོར་དགོས། {{tools}}"
-toolSettings = "ལག་ཆ་སྒྲིག་འགོད"
+testRun = "Test with a file"
 unknownStep = "ངོས་འཛིན་མ་ཐུབ་པའི་བཀོལ་སྤྱོད། རང་འཇགས་ཉར་ཡོད།"
 unsavedBody = "ཁྱེད་ལ་ཉར་ཚགས་མ་བྱས་པའི་འགྱུར་བ་ཡོད། ཕྱིར་མ་ཐོན་གོང་དེ་དག་ཉར་ཚགས་བྱེད་དམ། ཡང་ན་དོར་རམ།"
 unsavedTitle = "ཉར་ཚགས་མ་བྱས་པའི་འགྱུར་བ"
 uploadUnsupported = "ལས་རིམ་རྒྱུན་ནང་ད་དུང་ཡར་སྤྲོད་བྱས་པའི་ཡིག་ཆ་རྒྱབ་སྐྱོར་མེད་པས། གོམ་པ་འདི་དག་ཉར་ཚགས་བྱེད་མི་ཐུབ། {{tools}}"
 usesDefaults = "སྔོན་སྒྲིག་སྒྲིག་འགོད་ཀྱིས་འཁོར"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "གོམ་པ་སྔོན་མ་ནས་ཡིག་ཆ་ཚང་མ་ཟླ་སྒྲིལ་བྱེད"
@@ -7828,29 +7877,34 @@ undeclared-operation = "གོམ་པ་འདིས་གང་ལེན་�
 [portal.pipelines.composer]
 addTool = "ལག་ཆ་ཁ་སྣོན"
 cancel = "དོར"
-chainEmpty = "ཁྱེད་ཀྱི་ལས་རིམ་རྒྱུན་བཟོ་འགོ་ཚུགས་ཕྱིར་ལག་ཆ་ཞིག་ཁ་སྣོན།"
 create = "ལས་རིམ་རྒྱུན་བཟོ"
 editingUnsupported = "རྩོམ་སྒྲིག་ཆེད་ལག་ཆ་འདི་དག་གི་ཞུགས་གྲངས་སྟོན་པ་ད་དུང་རྒྱབ་སྐྱོར་མེད།"
-moveDown = "མར་སྤོ"
-moveUp = "ཡར་སྤོ"
+editSource = "Edit source"
 name = "མིང"
 namePlaceholder = "དཔེར་ན། ནག་སུབ་བཤེར་བ"
 noToolSettings = "ལག་ཆ་འདིར་སྒྲིག་སྦྱོར་བྱ་རུང་གི་སྒྲིག་འགོད་མེད།"
-operations_one = "བཀོལ་སྤྱོད ({{count}})"
-operations_other = "བཀོལ་སྤྱོད ({{count}})"
 output = "དམིགས་ས"
-removeStep = "བཀོལ་སྤྱོད་སུབ"
 save = "འགྱུར་བ་ཉར་ཚགས"
 scheduleEvery = "འཁོར་ཚད"
-sources = "ཁུངས"
-sourcesLoading = "ཁུངས་འཇུག་བཞིན..."
 trigger = "སྐུལ་རྐྱེན"
 triggerManual = "ལག་བཟོ་ཁོ་ན"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "ཉིན"
 hours = "ཆུ་ཚོད"
 minutes = "སྐར་མ"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "\"{{name}}\" སུབ་བམ། འདི་ཕྱིར་ལྡོག་བྱེད་མི་ཐུབ།"
@@ -7868,6 +7922,37 @@ action = "ལས་རིམ་རྒྱུན་ཞིག་བཟོ"
 connectSource = "ཁུངས་ཤིག་འབྲེལ་མཐུད"
 description = "ཁྱེད་ཀྱི་ལས་རིམ་རྒྱུན་དང་པོ་བཟོ། དེ་འཁོར་སའི་ཁུངས་འདེམས། བཀོལ་སྤྱོད་ཕྲེང་བར་སྦྲེལ། དེ་ནས་ཐོན་འབྲས་གང་དུ་འགྲོ་བ་འདེམས།"
 title = "ད་དུང་ལས་རིམ་རྒྱུན་མེད"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "འཁོར་བཞིན"
@@ -7894,6 +7979,7 @@ paused = "མཚམས་བཞག"
 
 [portal.pipelines.table]
 name = "ལས་རིམ་རྒྱུན"
+open = "Open"
 sources = "ཁུངས"
 status = "གནས་ཚུལ"
 steps = "གོམ་པ"
@@ -8785,6 +8871,7 @@ unused = "སྤྱོད་མེད"
 
 [portal.sources.table]
 documents = "ཡིག་ཆ"
+open = "Open"
 source = "ཁུངས"
 status = "གནས་ཚུལ"
 usedBy = "སྲིད་ཇུས"
@@ -10130,6 +10217,7 @@ last = "ཤོག་ངོས་མཐའ་མ།"
 maintainRatio = "འགྱུར་ལྡོག་རྒྱུན་འཛིན་གྱི་ཆ་སྙོམས།"
 next = "ཤོག་ངོས་རྗེས་མ།"
 noSavedSigs = "ཉར་ཚགས་བྱས་པའི་མཚན་རྟགས་རྙེད་མེད།"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "མི་སྒེར་གྱི་མཚན་རྟགས།"
 previous = "ཤོག་ངོས་གོང་མ།"
 redo = "བསྐྱར་དུ་བྱེད།"
@@ -10823,6 +10911,9 @@ pageFormatting = "ཤོག་བུ་བཟོ་བ།"
 removal = "བཏོན་པ།"
 signing = "མིང་རྟགས་བཀོད་པ།"
 verification = "བདེན་དཔང་།"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "ལག་ཆ་གང་ཡང་མཐོང་མ་བྱུང་།"

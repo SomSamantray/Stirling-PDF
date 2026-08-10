@@ -2933,12 +2933,16 @@ text = "Kako bi ove dozvole bile nepromjenjive, upotrijebite alat Dodaj lozinku 
 [chat.actions]
 copy = "Kopiraj poruku"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Opcije Stirling agenta"
+assistant = "AI Assistant"
 clearChat = "Obriši chat"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "Nastavi"
 copied = "Kopirano!"
 copy = "Kopiraj"
 done = "Gotovo"
+enterValue = "Enter value"
 error = "Pogreška"
 expand = "Proširi"
 loading = "Učitavanje..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "Pretraži..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "Uredi"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "Sve spremljeno"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "Izdvajanje CSV-a nije uspjelo"
 extractXlsxError = "Izdvajanje XLSX-a nije uspjelo"
+filled = "filled"
 flattenAfterFilling = "Izravnaj nakon ispunjavanja"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "obv"
 requiredFieldsError = "Ispunite sva obavezna polja"
 rescanFields = "Ponovno skeniraj polja"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "Osjetljivo — potreban je pristup"
 
 [portal.documents.table.columns]
 action = "Pipeline / Radnja"
+actions = "Actions"
 document = "Dokument"
 product = "Proizvod"
 status = "Status"
@@ -7275,6 +7290,41 @@ running = "Pokrenuto"
 description = "Ovaj prikaz naišao je na neočekivanu pogrešku. Pokušajte ponovno ili odaberite drugi odjeljak iz bočne trake."
 retry = "Pokušaj ponovno"
 title = "Nešto je pošlo po zlu na ovoj stranici"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "Natrag"
@@ -7786,7 +7836,6 @@ title = "Pipelineovi"
 newPipeline = "Novi pipeline"
 
 [portal.pipelines.builder]
-addStep = "Dodaj alat"
 back = "Natrag na pipelineove"
 cannotFollow = "Ne može primiti {{produced}}"
 chooseAccount = "Odaberite račun"
@@ -7799,23 +7848,23 @@ inputs = "Ulaz"
 inputSource = "Ulazni izvor"
 inputTrigger = "Okidač"
 keepEditing = "Nastavi uređivati"
+moreActions = "More actions"
 needsConfiguring = "Potrebno je postavljanje"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "Potrebna je učitana datoteka"
-noSources = "Još nema povezanih izvora. Izradite jedan da biste ga koristili kao ulaz."
 noToolMatches = "Nijedan alat ne odgovara vašem pretraživanju."
-pipelineSettings = "Postavke pipelinea"
 searchTools = "Pretraži alate"
-selectToolBody = "Dodajte alat za izradu pipelinea."
-selectToolTitle = "Još nema alata"
 sendToSystem = "Pošalji u drugi sustav"
 stepsIncompatible = "Ovi se koraci ne mogu pokrenuti na onome što proizvodi njihov prethodni korak: {{tools}}."
 stepsNeedSetup = "Ove korake još treba postaviti prije spremanja: {{tools}}."
-toolSettings = "Postavke alata"
+testRun = "Test with a file"
 unknownStep = "Neprepoznata operacija, zadržana takva kakva jest."
 unsavedBody = "Imate nespremljene promjene. Spremiti ih prije odlaska ili ih odbaciti?"
 unsavedTitle = "Nespremljene promjene"
 uploadUnsupported = "Učitane datoteke još nisu podržane u pipelineovima, pa se ovi koraci ne mogu spremiti: {{tools}}."
 usesDefaults = "Pokreće se sa zadanim postavkama"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "Kombinira svaku datoteku iz prethodnog koraka"
@@ -7828,29 +7877,34 @@ undeclared-operation = "Nije moguće provjeriti što ovaj korak prihvaća"
 [portal.pipelines.composer]
 addTool = "Dodaj alat"
 cancel = "Odustani"
-chainEmpty = "Dodajte alat za početak izrade pipelinea."
 create = "Izradi pipeline"
 editingUnsupported = "Prikaz ovih parametara alata za uređivanje još nije podržan."
-moveDown = "Pomakni dolje"
-moveUp = "Pomakni gore"
+editSource = "Edit source"
 name = "Naziv"
 namePlaceholder = "npr. Pregled redakcija"
 noToolSettings = "Ovaj alat nema konfigurabilnih postavki."
-operations_one = "Operacija ({{count}})"
-operations_other = "Operacije ({{count}})"
 output = "Izlaz"
-removeStep = "Ukloni operaciju"
 save = "Spremi promjene"
 scheduleEvery = "Pokreni svakih"
-sources = "Izvori"
-sourcesLoading = "Učitavanje izvora..."
 trigger = "Okidač"
 triggerManual = "Samo ručno"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "dana"
 hours = "sati"
 minutes = "minuta"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "Izbrisati \"{{name}}\"? Ovo se ne može poništiti."
@@ -7868,6 +7922,37 @@ action = "Izradi pipeline"
 connectSource = "Poveži izvor"
 description = "Izradite svoj prvi pipeline: odaberite izvore nad kojima se pokreće, povežite operacije i odaberite kamo ide izlaz."
 title = "Još nema pipelineova"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "Aktivno"
@@ -7894,6 +7979,7 @@ paused = "Pauzirano"
 
 [portal.pipelines.table]
 name = "Pipeline"
+open = "Open"
 sources = "Izvori"
 status = "Status"
 steps = "Koraci"
@@ -8785,6 +8871,7 @@ unused = "Neiskorišteno"
 
 [portal.sources.table]
 documents = "Dokumenti"
+open = "Open"
 source = "Izvor"
 status = "Status"
 usedBy = "Pravila"
@@ -10130,6 +10217,7 @@ last = "Zadnja stranica"
 maintainRatio = "Uključi/isključi održavanje omjera"
 next = "Sljedeća stranica"
 noSavedSigs = "Nema sacuvanih potpisa pronađenih"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "Osobni potpisi"
 previous = "Prethodna stranica"
 redo = "Ponovi"
@@ -10823,6 +10911,9 @@ pageFormatting = "Formatiranje stranica"
 removal = "Uklanjanje"
 signing = "Potpisivanje"
 verification = "Provjera"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "Nije pronađen nijedan alat"

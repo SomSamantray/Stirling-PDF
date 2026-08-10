@@ -2933,12 +2933,16 @@ text = "ഈ അനുമതികൾ മാറ്റാൻ പറ്റാത്
 [chat.actions]
 copy = "സന്ദേശം പകർത്തുക"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Stirling ഏജന്റ് ഓപ്ഷനുകൾ"
+assistant = "AI Assistant"
 clearChat = "ചാറ്റ് മായ്ക്കുക"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "തുടരുക"
 copied = "പകർത്തി!"
 copy = "പകർത്തുക"
 done = "പൂർത്തിയായി"
+enterValue = "Enter value"
 error = "പിശക്"
 expand = "വിപുലീകരിക്കുക"
 loading = "ലോഡുചെയ്യുന്നു..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "തിരയുക..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "തിരുത്തുക"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "എല്ലാം സേവ് ചെയ്തു"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "CSV extract ചെയ്യാനായില്ല"
 extractXlsxError = "XLSX extract ചെയ്യാനായില്ല"
+filled = "filled"
 flattenAfterFilling = "പൂരിപ്പിച്ചതിന് ശേഷം ഫ്ലാറ്റൻ ചെയ്യുക"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "ആവ."
 requiredFieldsError = "ആവശ്യമായ എല്ലാ fields-ഉം പൂരിപ്പിക്കുക"
 rescanFields = "ഫീൽഡുകൾ വീണ്ടും സ്കാൻ ചെയ്യുക"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "സെൻസിറ്റീവ് — പ്രവേശനം
 
 [portal.documents.table.columns]
 action = "പൈപ്പ്‌ലൈൻ / പ്രവർത്തനം"
+actions = "Actions"
 document = "ഡോക്യുമെന്റ്"
 product = "ഉൽപ്പന്നം"
 status = "സ്ഥിതി"
@@ -7275,6 +7290,41 @@ running = "പ്രവർത്തിക്കുന്നു"
 description = "ഈ view-ൽ അപ്രതീക്ഷിത പിശക് സംഭവിച്ചു. വീണ്ടും ശ്രമിക്കുക, അല്ലെങ്കിൽ sidebar-ൽ നിന്ന് മറ്റൊരു section തിരഞ്ഞെടുക്കുക."
 retry = "വീണ്ടും ശ്രമിക്കുക"
 title = "ഈ പേജിൽ എന്തോ പിഴച്ചു"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "Back"
@@ -7786,7 +7836,6 @@ title = "പൈപ്പ്‌ലൈനുകൾ"
 newPipeline = "പുതിയ പൈപ്പ്‌ലൈൻ"
 
 [portal.pipelines.builder]
-addStep = "Tool ചേർക്കുക"
 back = "പൈപ്പ്‌ലൈനുകളിലേക്ക് മടങ്ങുക"
 cannotFollow = "{{produced}} സ്വീകരിക്കാൻ കഴിയില്ല"
 chooseAccount = "ഒരു account തിരഞ്ഞെടുക്കുക"
@@ -7799,23 +7848,23 @@ inputs = "Input"
 inputSource = "Input source"
 inputTrigger = "Trigger"
 keepEditing = "Editing തുടരുക"
+moreActions = "More actions"
 needsConfiguring = "സജ്ജീകരണം ആവശ്യമാണ്"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "Uploaded file ആവശ്യമാണ്"
-noSources = "ഇതുവരെ sources ഒന്നും ബന്ധിപ്പിച്ചിട്ടില്ല. Input ആയി ഉപയോഗിക്കാൻ ഒന്ന് സൃഷ്ടിക്കുക."
 noToolMatches = "നിങ്ങളുടെ search-നോട് പൊരുത്തപ്പെടുന്ന tools ഇല്ല."
-pipelineSettings = "പൈപ്പ്‌ലൈൻ settings"
 searchTools = "Tools search ചെയ്യുക"
-selectToolBody = "നിങ്ങളുടെ പൈപ്പ്‌ലൈൻ നിർമ്മിക്കാൻ ഒരു tool ചേർക്കുക."
-selectToolTitle = "ഇതുവരെ tools ഇല്ല"
 sendToSystem = "മറ്റൊരു system-ലേക്ക് അയയ്ക്കുക"
 stepsIncompatible = "മുമ്പത്തെ step സൃഷ്ടിക്കുന്നതിൽ ഈ steps പ്രവർത്തിക്കാൻ കഴിയില്ല: {{tools}}."
 stepsNeedSetup = "save ചെയ്യുന്നതിന് മുമ്പ് ഈ steps-ന് ഇനിയും സജ്ജീകരണം ആവശ്യമാണ്: {{tools}}."
-toolSettings = "Tool settings"
+testRun = "Test with a file"
 unknownStep = "തിരിച്ചറിയാത്ത operation, അതേപടി സൂക്ഷിച്ചു."
 unsavedBody = "നിങ്ങൾക്ക് save ചെയ്യാത്ത മാറ്റങ്ങളുണ്ട്. പോകുന്നതിനുമുമ്പ് അവ save ചെയ്യണോ, അല്ലെങ്കിൽ ഉപേക്ഷിക്കണോ?"
 unsavedTitle = "Save ചെയ്യാത്ത മാറ്റങ്ങൾ"
 uploadUnsupported = "Uploaded files ഇതുവരെ pipelines-ൽ support ചെയ്യുന്നില്ല, അതിനാൽ ഈ steps save ചെയ്യാൻ കഴിയില്ല: {{tools}}."
 usesDefaults = "Default settings ഉപയോഗിച്ച് run ചെയ്യുന്നു"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "മുമ്പത്തെ step-ൽ നിന്നുള്ള ഓരോ file-ഉം സംയോജിപ്പിക്കുന്നു"
@@ -7828,29 +7877,34 @@ undeclared-operation = "ഈ step എന്താണ് സ്വീകരിക�
 [portal.pipelines.composer]
 addTool = "Tool ചേർക്കുക"
 cancel = "റദ്ദാക്കുക"
-chainEmpty = "നിങ്ങളുടെ പൈപ്പ്‌ലൈൻ നിർമ്മിക്കാൻ ഒരു tool ചേർക്കുക."
 create = "പൈപ്പ്‌ലൈൻ സൃഷ്ടിക്കുക"
 editingUnsupported = "Editing-നായി ഈ tool params പ്രദർശിപ്പിക്കുന്നത് ഇതുവരെ support ചെയ്യുന്നില്ല."
-moveDown = "താഴേക്ക് നീക്കുക"
-moveUp = "മുകളിലേക്ക് നീക്കുക"
+editSource = "Edit source"
 name = "പേര്"
 namePlaceholder = "ഉദാ. Redaction sweep"
 noToolSettings = "ഈ tool-ന് configurable settings ഇല്ല."
-operations_one = "Operation ({{count}})"
-operations_other = "Operations ({{count}})"
 output = "Output"
-removeStep = "Operation നീക്കം ചെയ്യുക"
 save = "മാറ്റങ്ങൾ save ചെയ്യുക"
 scheduleEvery = "ഓരോ"
-sources = "ഉറവിടങ്ങൾ"
-sourcesLoading = "Sources load ചെയ്യുന്നു..."
 trigger = "Trigger"
 triggerManual = "Manual മാത്രം"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "ദിവസങ്ങൾ"
 hours = "മണിക്കൂറുകൾ"
 minutes = "മിനിറ്റുകൾ"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "\"{{name}}\" delete ചെയ്യണോ? ഇത് പഴയപടി ആക്കാൻ കഴിയില്ല."
@@ -7868,6 +7922,37 @@ action = "ഒരു പൈപ്പ്‌ലൈൻ സൃഷ്ടിക്ക�
 connectSource = "ഒരു source ബന്ധിപ്പിക്കുക"
 description = "നിങ്ങളുടെ ആദ്യ പൈപ്പ്‌ലൈൻ സൃഷ്ടിക്കുക: അത് run ചെയ്യുന്ന sources തിരഞ്ഞെടുക്കുക, operations chain ചെയ്യുക, output എവിടേക്ക് പോകണമെന്ന് തിരഞ്ഞെടുക്കുക."
 title = "ഇതുവരെ പൈപ്പ്‌ലൈനുകളില്ല"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "സജീവം"
@@ -7894,6 +7979,7 @@ paused = "Paused"
 
 [portal.pipelines.table]
 name = "Pipeline"
+open = "Open"
 sources = "ഉറവിടങ്ങൾ"
 status = "സ്ഥിതി"
 steps = "Steps"
@@ -8785,6 +8871,7 @@ unused = "ഉപയോഗിക്കാത്തത്"
 
 [portal.sources.table]
 documents = "Documents"
+open = "Open"
 source = "ഉറവിടം"
 status = "സ്ഥിതി"
 usedBy = "നയങ്ങൾ"
@@ -10130,6 +10217,7 @@ last = "അവസാന പേജ്"
 maintainRatio = "വീക്ഷണാനുപാതം നിലനിർത്തുക ടോഗിൾ ചെയ്യുക"
 next = "അടുത്ത പേജ്"
 noSavedSigs = "സംരക്ഷിച്ച ഒപ്പുകളൊന്നും കണ്ടെത്തിയില്ല"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "വ്യക്തിഗത ഒപ്പുകൾ"
 previous = "മുമ്പത്തെ പേജ്"
 redo = "വീണ്ടും ചെയ്യുക"
@@ -10823,6 +10911,9 @@ pageFormatting = "പേജ് ഫോർമാറ്റിംഗ്"
 removal = "നീക്കം"
 signing = "ഒപ്പിടൽ"
 verification = "സ്ഥിരീകരണം"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "ഒരു ടൂളും കണ്ടെത്തിയില്ല"

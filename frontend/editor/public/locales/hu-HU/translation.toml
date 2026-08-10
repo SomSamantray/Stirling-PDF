@@ -2933,12 +2933,16 @@ text = "Ezeket a jogosultságokat tegye megváltoztathatatlanná a \"Jelszó hoz
 [chat.actions]
 copy = "Üzenet másolása"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Stirling ügynök beállításai"
+assistant = "AI Assistant"
 clearChat = "Csevegés törlése"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "Folytatás"
 copied = "Másolva!"
 copy = "Másolás"
 done = "Kész"
+enterValue = "Enter value"
 error = "Hiba"
 expand = "Kibontás"
 loading = "Betöltés..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "Keresés..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "Szerkesztés"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "Minden mentve"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "CSV kinyerése sikertelen"
 extractXlsxError = "XLSX kinyerése sikertelen"
+filled = "filled"
 flattenAfterFilling = "Kitöltés után lapítás"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "kötelező"
 requiredFieldsError = "Kérjük, töltse ki az összes kötelező mezőt"
 rescanFields = "Mezők újraolvasása"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "Érzékeny — hozzáférés szükséges"
 
 [portal.documents.table.columns]
 action = "Pipeline / művelet"
+actions = "Actions"
 document = "Dokumentum"
 product = "Termék"
 status = "Állapot"
@@ -7275,6 +7290,41 @@ running = "Fut"
 description = "Ez a nézet váratlan hibába ütközött. Próbálja újra, vagy válasszon másik szakaszt az oldalsávból."
 retry = "Próbálja újra"
 title = "Valami hiba történt ezen az oldalon"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "Vissza"
@@ -7786,7 +7836,6 @@ title = "Pipeline-ok"
 newPipeline = "Új pipeline"
 
 [portal.pipelines.builder]
-addStep = "Eszköz hozzáadása"
 back = "Vissza a pipeline-okhoz"
 cannotFollow = "Nem tudja fogadni ezt: {{produced}}"
 chooseAccount = "Válasszon fiókot"
@@ -7799,23 +7848,23 @@ inputs = "Bemenet"
 inputSource = "Bemeneti forrás"
 inputTrigger = "Trigger"
 keepEditing = "Szerkesztés folytatása"
+moreActions = "More actions"
 needsConfiguring = "Beállítás szükséges"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "Feltöltött fájl szükséges"
-noSources = "Még nincs csatlakoztatott forrás. Hozzon létre egyet, hogy bemenetként használhassa."
 noToolMatches = "Nincs a keresésnek megfelelő eszköz."
-pipelineSettings = "Pipeline beállításai"
 searchTools = "Eszközök keresése"
-selectToolBody = "Adjon hozzá egy eszközt a pipeline felépítéséhez."
-selectToolTitle = "Még nincsenek eszközök"
 sendToSystem = "Küldés másik rendszerbe"
 stepsIncompatible = "Ezek a lépések nem futtathatók azon, amit az előző lépés előállít: {{tools}}."
 stepsNeedSetup = "Ezeket a lépéseket mentés előtt még be kell állítani: {{tools}}."
-toolSettings = "Eszköz beállításai"
+testRun = "Test with a file"
 unknownStep = "Ismeretlen művelet, változatlanul megtartva."
 unsavedBody = "Nem mentett módosításai vannak. Mentse őket kilépés előtt, vagy elveti őket?"
 unsavedTitle = "Nem mentett módosítások"
 uploadUnsupported = "A feltöltött fájlok még nem támogatottak pipeline-okban, ezért ezek a lépések nem menthetők: {{tools}}."
 usesDefaults = "Alapértelmezett beállításokkal fut"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "Az előző lépés összes fájlját egyesíti"
@@ -7828,29 +7877,34 @@ undeclared-operation = "Nem ellenőrizhető, hogy ez a lépés mit fogad el"
 [portal.pipelines.composer]
 addTool = "Eszköz hozzáadása"
 cancel = "Mégse"
-chainEmpty = "Adjon hozzá egy eszközt a pipeline építésének megkezdéséhez."
 create = "Pipeline létrehozása"
 editingUnsupported = "Ezeknek az eszközparamétereknek a szerkesztésre való megjelenítése még nem támogatott."
-moveDown = "Mozgatás le"
-moveUp = "Mozgatás fel"
+editSource = "Edit source"
 name = "Név"
 namePlaceholder = "pl. Kitakarítási átvizsgálás"
 noToolSettings = "Ennek az eszköznek nincsenek konfigurálható beállításai."
-operations_one = "Művelet ({{count}})"
-operations_other = "Műveletek ({{count}})"
 output = "Kimenet"
-removeStep = "Művelet eltávolítása"
 save = "Módosítások mentése"
 scheduleEvery = "Futtatás minden"
-sources = "Források"
-sourcesLoading = "Források betöltése..."
 trigger = "Trigger"
 triggerManual = "Csak manuális"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "nap"
 hours = "óra"
 minutes = "perc"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "Törli ezt: \"{{name}}\"? Ez nem vonható vissza."
@@ -7868,6 +7922,37 @@ action = "Pipeline létrehozása"
 connectSource = "Forrás csatlakoztatása"
 description = "Hozza létre első pipeline-ját: válassza ki a forrásokat, amelyeken fut, fűzze össze a műveleteket, és adja meg, hová kerüljön a kimenet."
 title = "Még nincsenek pipeline-ok"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "Aktív"
@@ -7894,6 +7979,7 @@ paused = "Szüneteltetve"
 
 [portal.pipelines.table]
 name = "Pipeline"
+open = "Open"
 sources = "Források"
 status = "Állapot"
 steps = "Lépések"
@@ -8785,6 +8871,7 @@ unused = "Nem használt"
 
 [portal.sources.table]
 documents = "Dokumentumok"
+open = "Open"
 source = "Forrás"
 status = "Állapot"
 usedBy = "Házirendek"
@@ -10130,6 +10217,7 @@ last = "Utolsó oldal"
 maintainRatio = "Képarány fenntartása váltása"
 next = "Következő oldal"
 noSavedSigs = "Nincsenek mentett aláírások"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "Személyes aláírások"
 previous = "Előző oldal"
 redo = "Újra"
@@ -10823,6 +10911,9 @@ pageFormatting = "Oldalformázás"
 removal = "Eltávolítás"
 signing = "Aláírás"
 verification = "Ellenőrzés"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "Nem találhatók eszközök"

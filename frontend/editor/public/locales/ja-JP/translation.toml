@@ -2933,12 +2933,16 @@ text = "これらの権限を変更不可にするには、パスワード追加
 [chat.actions]
 copy = "メッセージをコピー"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Stirling エージェントのオプション"
+assistant = "AI Assistant"
 clearChat = "チャットをクリア"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "続行"
 copied = "コピーしました！"
 copy = "コピー"
 done = "完了"
+enterValue = "Enter value"
 error = "エラー"
 expand = "展開"
 loading = "読み込み中..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "検索..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "編集"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "すべて保存済み"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "CSV の抽出に失敗しました"
 extractXlsxError = "XLSX の抽出に失敗しました"
+filled = "filled"
 flattenAfterFilling = "入力後にフラット化"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "必須"
 requiredFieldsError = "必須フィールドをすべて入力してください"
 rescanFields = "フィールドを再スキャン"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "機密 — アクセスが必要"
 
 [portal.documents.table.columns]
 action = "パイプライン / アクション"
+actions = "Actions"
 document = "ドキュメント"
 product = "製品"
 status = "ステータス"
@@ -7275,6 +7290,41 @@ running = "実行中"
 description = "このビューで予期しないエラーが発生しました。再試行するか、サイドバーから別のセクションを選択してください。"
 retry = "再試行"
 title = "このページで問題が発生しました"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "戻る"
@@ -7786,7 +7836,6 @@ title = "パイプライン"
 newPipeline = "新しいパイプライン"
 
 [portal.pipelines.builder]
-addStep = "ツールを追加"
 back = "パイプラインに戻る"
 cannotFollow = "{{produced}} を受け取れません"
 chooseAccount = "アカウントを選択"
@@ -7799,23 +7848,23 @@ inputs = "入力"
 inputSource = "入力ソース"
 inputTrigger = "トリガー"
 keepEditing = "編集を続ける"
+moreActions = "More actions"
 needsConfiguring = "設定が必要です"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "アップロードされたファイルが必要"
-noSources = "まだ接続済みのソースがありません。入力として使用するには作成してください。"
 noToolMatches = "検索に一致するツールはありません。"
-pipelineSettings = "パイプライン設定"
 searchTools = "ツールを検索"
-selectToolBody = "ツールを追加してパイプラインを構築します。"
-selectToolTitle = "ツールはまだありません"
 sendToSystem = "別のシステムへ送信"
 stepsIncompatible = "これらのステップは、前のステップが生成するものでは実行できません: {{tools}}。"
 stepsNeedSetup = "保存する前に、これらのステップの設定がまだ必要です: {{tools}}。"
-toolSettings = "ツール設定"
+testRun = "Test with a file"
 unknownStep = "認識できない操作です。そのまま保持されました。"
 unsavedBody = "未保存の変更があります。離れる前に保存しますか、それとも破棄しますか？"
 unsavedTitle = "未保存の変更"
 uploadUnsupported = "アップロードされたファイルはまだパイプラインでサポートされていないため、これらのステップは保存できません: {{tools}}。"
 usesDefaults = "デフォルト設定で実行"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "前のステップからのすべてのファイルを結合します"
@@ -7828,29 +7877,34 @@ undeclared-operation = "このステップが受け付けるものを確認で�
 [portal.pipelines.composer]
 addTool = "ツールを追加"
 cancel = "キャンセル"
-chainEmpty = "ツールを追加してパイプラインの構築を開始します。"
 create = "パイプラインを作成"
 editingUnsupported = "これらのツールパラメーターを編集用に表示することはまだサポートされていません。"
-moveDown = "下へ移動"
-moveUp = "上へ移動"
+editSource = "Edit source"
 name = "名前"
 namePlaceholder = "例: Redaction sweep"
 noToolSettings = "このツールには設定可能な項目がありません。"
-operations_one = "操作（{{count}}）"
-operations_other = "操作（{{count}}）"
 output = "出力"
-removeStep = "操作を削除"
 save = "変更を保存"
 scheduleEvery = "実行間隔"
-sources = "ソース"
-sourcesLoading = "ソースを読み込み中..."
 trigger = "トリガー"
 triggerManual = "手動のみ"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "日"
 hours = "時間"
 minutes = "分"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "\"{{name}}\" を削除しますか？この操作は元に戻せません。"
@@ -7868,6 +7922,37 @@ action = "パイプラインを作成"
 connectSource = "ソースを接続"
 description = "最初のパイプラインを作成します: 実行対象のソースを選び、操作を連結し、出力先を選択します。"
 title = "パイプラインはまだありません"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "アクティブ"
@@ -7894,6 +7979,7 @@ paused = "一時停止中"
 
 [portal.pipelines.table]
 name = "パイプライン"
+open = "Open"
 sources = "ソース"
 status = "ステータス"
 steps = "ステップ"
@@ -8785,6 +8871,7 @@ unused = "未使用"
 
 [portal.sources.table]
 documents = "ドキュメント"
+open = "Open"
 source = "ソース"
 status = "ステータス"
 usedBy = "ポリシー"
@@ -10130,6 +10217,7 @@ last = "最後のページ"
 maintainRatio = "アスペクト比を維持を切替え"
 next = "次のページ"
 noSavedSigs = "保存された署名が見つかりません"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "個人署名"
 previous = "前のページ"
 redo = "やり直す"
@@ -10823,6 +10911,9 @@ pageFormatting = "ページ整形"
 removal = "削除"
 signing = "署名"
 verification = "検証"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "ツールが見つかりません"

@@ -2933,12 +2933,16 @@ text = "Чтобы сделать эти разрешения неизменяе
 [chat.actions]
 copy = "Копировать сообщение"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Параметры агента Stirling"
+assistant = "AI Assistant"
 clearChat = "Очистить чат"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "Продолжить"
 copied = "Скопировано!"
 copy = "Копировать"
 done = "Готово"
+enterValue = "Enter value"
 error = "Ошибка"
 expand = "Развернуть"
 loading = "Загрузка..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "Поиск..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "Изменить"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "Все сохранено"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "Не удалось извлечь CSV"
 extractXlsxError = "Не удалось извлечь XLSX"
+filled = "filled"
 flattenAfterFilling = "Сплющить после заполнения"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "обяз."
 requiredFieldsError = "Заполните все обязательные поля"
 rescanFields = "Пересканировать поля"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "Конфиденциально — требуется дост
 
 [portal.documents.table.columns]
 action = "Pipeline / Действие"
+actions = "Actions"
 document = "Документ"
 product = "Продукт"
 status = "Статус"
@@ -7275,6 +7290,41 @@ running = "Работает"
 description = "В этом представлении произошла непредвиденная ошибка. Попробуйте еще раз или выберите другой раздел на боковой панели."
 retry = "Попробовать еще раз"
 title = "На этой странице что-то пошло не так"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "Назад"
@@ -7786,7 +7836,6 @@ title = "Pipelines"
 newPipeline = "Новый pipeline"
 
 [portal.pipelines.builder]
-addStep = "Добавить инструмент"
 back = "Назад к pipelines"
 cannotFollow = "Не удается принять {{produced}}"
 chooseAccount = "Выберите учетную запись"
@@ -7799,23 +7848,23 @@ inputs = "Ввод"
 inputSource = "Источник ввода"
 inputTrigger = "Триггер"
 keepEditing = "Продолжить редактирование"
+moreActions = "More actions"
 needsConfiguring = "Требуется настройка"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "Требуется загруженный файл"
-noSources = "Источники еще не подключены. Создайте источник, чтобы использовать его как ввод."
 noToolMatches = "Нет инструментов, соответствующих вашему поиску."
-pipelineSettings = "Настройки pipeline"
 searchTools = "Искать инструменты"
-selectToolBody = "Добавьте инструмент, чтобы создать свой pipeline."
-selectToolTitle = "Инструментов пока нет"
 sendToSystem = "Отправить в другую систему"
 stepsIncompatible = "Эти шаги не могут работать с тем, что производит предыдущий шаг: {{tools}}."
 stepsNeedSetup = "Эти шаги все еще нужно настроить перед сохранением: {{tools}}."
-toolSettings = "Настройки инструмента"
+testRun = "Test with a file"
 unknownStep = "Нераспознанная операция, сохранена как есть."
 unsavedBody = "У вас есть несохраненные изменения. Сохранить их перед выходом или отменить?"
 unsavedTitle = "Несохраненные изменения"
 uploadUnsupported = "Загруженные файлы пока не поддерживаются в pipelines, поэтому эти шаги нельзя сохранить: {{tools}}."
 usesDefaults = "Запускается с настройками по умолчанию"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "Объединяет каждый файл из предыдущего шага"
@@ -7828,29 +7877,34 @@ undeclared-operation = "Не удается проверить, что прин�
 [portal.pipelines.composer]
 addTool = "Добавить инструмент"
 cancel = "Отмена"
-chainEmpty = "Добавьте инструмент, чтобы начать создавать свой pipeline."
 create = "Создать pipeline"
 editingUnsupported = "Отображение этих параметров инструмента для редактирования пока не поддерживается."
-moveDown = "Переместить вниз"
-moveUp = "Переместить вверх"
+editSource = "Edit source"
 name = "Имя"
 namePlaceholder = "например, проверка редактирования"
 noToolSettings = "У этого инструмента нет настраиваемых параметров."
-operations_one = "Операция ({{count}})"
-operations_other = "Операции ({{count}})"
 output = "Вывод"
-removeStep = "Удалить операцию"
 save = "Сохранить изменения"
 scheduleEvery = "Запускать каждые"
-sources = "Источники"
-sourcesLoading = "Загрузка источников..."
 trigger = "Триггер"
 triggerManual = "Только вручную"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "дней"
 hours = "часов"
 minutes = "минут"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "Удалить \"{{name}}\"? Это действие нельзя отменить."
@@ -7868,6 +7922,37 @@ action = "Создать pipeline"
 connectSource = "Подключить источник"
 description = "Создайте первый pipeline: выберите источники, над которыми он запускается, свяжите операции и выберите, куда отправлять вывод."
 title = "Pipelines пока нет"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "Активные"
@@ -7894,6 +7979,7 @@ paused = "Приостановлен"
 
 [portal.pipelines.table]
 name = "Pipeline"
+open = "Open"
 sources = "Источники"
 status = "Статус"
 steps = "Шаги"
@@ -8785,6 +8871,7 @@ unused = "Не используется"
 
 [portal.sources.table]
 documents = "Документы"
+open = "Open"
 source = "Источник"
 status = "Статус"
 usedBy = "Политики"
@@ -10130,6 +10217,7 @@ last = "Последняя страница"
 maintainRatio = "Переключить сохранение пропорций"
 next = "Следующая страница"
 noSavedSigs = "Сохраненные подписи не найдены"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "Личные подписи"
 previous = "Предыдущая страница"
 redo = "Повторить"
@@ -10823,6 +10911,9 @@ pageFormatting = "Форматирование страниц"
 removal = "Удаление"
 signing = "Подписание"
 verification = "Проверка"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "Инструменты не найдены"

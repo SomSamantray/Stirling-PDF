@@ -2933,12 +2933,16 @@ text = "Abyste tato oprávnění učinili nezměnitelnými, použijte nástroj P
 [chat.actions]
 copy = "Kopírovat zprávu"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Možnosti agenta Stirling"
+assistant = "AI Assistant"
 clearChat = "Vymazat chat"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "Pokračovat"
 copied = "Zkopírováno!"
 copy = "Kopírovat"
 done = "Hotovo"
+enterValue = "Enter value"
 error = "Chyba"
 expand = "Rozbalit"
 loading = "Načítání..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "Hledat..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "Upravit"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "Vše uloženo"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "Nepodařilo se extrahovat CSV"
 extractXlsxError = "Nepodařilo se extrahovat XLSX"
+filled = "filled"
 flattenAfterFilling = "Zploštit po vyplnění"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "pov."
 requiredFieldsError = "Vyplňte prosím všechna povinná pole"
 rescanFields = "Znovu detekovat pole"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "Citlivé — je vyžadován přístup"
 
 [portal.documents.table.columns]
 action = "Pipeline / Akce"
+actions = "Actions"
 document = "Dokument"
 product = "Produkt"
 status = "Stav"
@@ -7275,6 +7290,41 @@ running = "Běží"
 description = "V tomto zobrazení došlo k neočekávané chybě. Zkuste to znovu nebo vyberte jinou sekci z postranního panelu."
 retry = "Zkusit znovu"
 title = "Na této stránce se něco pokazilo"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "Zpět"
@@ -7786,7 +7836,6 @@ title = "Pipeline"
 newPipeline = "Nová pipeline"
 
 [portal.pipelines.builder]
-addStep = "Přidat nástroj"
 back = "Zpět na pipeline"
 cannotFollow = "Nelze přijmout {{produced}}"
 chooseAccount = "Vyberte účet"
@@ -7799,23 +7848,23 @@ inputs = "Vstup"
 inputSource = "Vstupní zdroj"
 inputTrigger = "Spouštěč"
 keepEditing = "Pokračovat v úpravách"
+moreActions = "More actions"
 needsConfiguring = "Vyžaduje nastavení"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "Vyžaduje nahraný soubor"
-noSources = "Zatím nejsou připojeny žádné zdroje. Vytvořte jeden, abyste jej mohli použít jako vstup."
 noToolMatches = "Vašemu hledání neodpovídají žádné nástroje."
-pipelineSettings = "Nastavení pipeline"
 searchTools = "Hledat nástroje"
-selectToolBody = "Přidejte nástroj a vytvořte svou pipeline."
-selectToolTitle = "Zatím žádné nástroje"
 sendToSystem = "Odeslat do jiného systému"
 stepsIncompatible = "Tyto kroky nelze spustit nad tím, co vytváří jejich předchozí krok: {{tools}}."
 stepsNeedSetup = "Tyto kroky je před uložením stále nutné nastavit: {{tools}}."
-toolSettings = "Nastavení nástroje"
+testRun = "Test with a file"
 unknownStep = "Nerozpoznaná operace, ponechána beze změny."
 unsavedBody = "Máte neuložené změny. Uložte je před odchodem, nebo je zahoďte?"
 unsavedTitle = "Neuložené změny"
 uploadUnsupported = "Nahrané soubory zatím nejsou v pipeline podporovány, takže tyto kroky nelze uložit: {{tools}}."
 usesDefaults = "Spouští se s výchozím nastavením"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "Kombinuje každý soubor z předchozího kroku"
@@ -7828,29 +7877,34 @@ undeclared-operation = "Nelze zkontrolovat, co tento krok přijímá"
 [portal.pipelines.composer]
 addTool = "Přidat nástroj"
 cancel = "Zrušit"
-chainEmpty = "Přidejte nástroj a začněte vytvářet svou pipeline."
 create = "Vytvořit pipeline"
 editingUnsupported = "Zobrazení těchto parametrů nástroje pro úpravy zatím není podporováno."
-moveDown = "Přesunout dolů"
-moveUp = "Přesunout nahoru"
+editSource = "Edit source"
 name = "Název"
 namePlaceholder = "např. Kontrola redakcí"
 noToolSettings = "Tento nástroj nemá žádná konfigurovatelná nastavení."
-operations_one = "Operace ({{count}})"
-operations_other = "Operace ({{count}})"
 output = "Výstup"
-removeStep = "Odebrat operaci"
 save = "Uložit změny"
 scheduleEvery = "Spustit každých"
-sources = "Zdroje"
-sourcesLoading = "Načítání zdrojů..."
 trigger = "Trigger"
 triggerManual = "Pouze ručně"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "dní"
 hours = "hodin"
 minutes = "minut"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "Smazat „{{name}}“? Tuto akci nelze vrátit zpět."
@@ -7868,6 +7922,37 @@ action = "Vytvořit pipeline"
 connectSource = "Připojit zdroj"
 description = "Vytvořte svou první pipeline: vyberte zdroje, nad kterými běží, zřetězte operace a zvolte, kam půjde výstup."
 title = "Zatím žádné pipeline"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "Aktivní"
@@ -7894,6 +7979,7 @@ paused = "Pozastaveno"
 
 [portal.pipelines.table]
 name = "Pipeline"
+open = "Open"
 sources = "Zdroje"
 status = "Stav"
 steps = "Kroky"
@@ -8785,6 +8871,7 @@ unused = "Nepoužito"
 
 [portal.sources.table]
 documents = "Dokumenty"
+open = "Open"
 source = "Zdroj"
 status = "Stav"
 usedBy = "Zásady"
@@ -10130,6 +10217,7 @@ last = "Poslední stránka"
 maintainRatio = "Přepnout zachování poměru stran"
 next = "Další stránka"
 noSavedSigs = "Nebyly nalezeny žádné uložené podpisy"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "Osobní podpisy"
 previous = "Předchozí stránka"
 redo = "Znovu"
@@ -10823,6 +10911,9 @@ pageFormatting = "Formátování stránek"
 removal = "Odstranění"
 signing = "Podepisování"
 verification = "Ověření"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "Nebyly nalezeny žádné nástroje"

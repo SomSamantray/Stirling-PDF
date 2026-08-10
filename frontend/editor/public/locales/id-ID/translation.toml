@@ -2933,12 +2933,16 @@ text = "Agar izin ini tidak dapat diubah, gunakan alat Tambah Kata Sandi untuk m
 [chat.actions]
 copy = "Salin pesan"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Opsi agen Stirling"
+assistant = "AI Assistant"
 clearChat = "Hapus obrolan"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "Lanjut"
 copied = "Disalin!"
 copy = "Salin"
 done = "Selesai"
+enterValue = "Enter value"
 error = "Error"
 expand = "Perluas"
 loading = "Memuat..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "Cari..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "Edit"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "Semua tersimpan"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "Gagal mengekstrak CSV"
 extractXlsxError = "Gagal mengekstrak XLSX"
+filled = "filled"
 flattenAfterFilling = "Ratakan setelah mengisi"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "wajib"
 requiredFieldsError = "Harap isi semua bidang wajib"
 rescanFields = "Pindai ulang bidang"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "Sensitif — akses diperlukan"
 
 [portal.documents.table.columns]
 action = "Pipeline / Tindakan"
+actions = "Actions"
 document = "Dokumen"
 product = "Produk"
 status = "Status"
@@ -7275,6 +7290,41 @@ running = "Berjalan"
 description = "Tampilan ini mengalami error tak terduga. Coba lagi, atau pilih bagian lain dari sidebar."
 retry = "Coba lagi"
 title = "Terjadi kesalahan pada halaman ini"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "Kembali"
@@ -7786,7 +7836,6 @@ title = "Pipeline"
 newPipeline = "Pipeline baru"
 
 [portal.pipelines.builder]
-addStep = "Tambah alat"
 back = "Kembali ke pipeline"
 cannotFollow = "Tidak dapat mengambil {{produced}}"
 chooseAccount = "Pilih akun"
@@ -7799,23 +7848,23 @@ inputs = "Input"
 inputSource = "Sumber input"
 inputTrigger = "Pemicu"
 keepEditing = "Lanjutkan mengedit"
+moreActions = "More actions"
 needsConfiguring = "Perlu disiapkan"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "Memerlukan file yang di-upload"
-noSources = "Belum ada sumber yang terhubung. Buat satu untuk digunakan sebagai input."
 noToolMatches = "Tidak ada alat yang cocok dengan pencarian Anda."
-pipelineSettings = "Pengaturan pipeline"
 searchTools = "Cari alat"
-selectToolBody = "Tambahkan alat untuk membangun pipeline Anda."
-selectToolTitle = "Belum ada alat"
 sendToSystem = "Kirim ke sistem lain"
 stepsIncompatible = "Langkah-langkah ini tidak dapat berjalan pada hasil dari langkah sebelumnya: {{tools}}."
 stepsNeedSetup = "Langkah-langkah ini masih perlu disiapkan sebelum menyimpan: {{tools}}."
-toolSettings = "Pengaturan alat"
+testRun = "Test with a file"
 unknownStep = "Operasi tidak dikenali, dipertahankan apa adanya."
 unsavedBody = "Anda memiliki perubahan yang belum disimpan. Simpan sebelum keluar, atau buang?"
 unsavedTitle = "Perubahan belum disimpan"
 uploadUnsupported = "File yang di-upload belum didukung di pipeline, jadi langkah ini tidak dapat disimpan: {{tools}}."
 usesDefaults = "Berjalan dengan pengaturan default"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "Menggabungkan setiap file dari langkah sebelumnya"
@@ -7828,29 +7877,34 @@ undeclared-operation = "Tidak dapat memeriksa apa yang diterima langkah ini"
 [portal.pipelines.composer]
 addTool = "Tambah alat"
 cancel = "Batal"
-chainEmpty = "Tambahkan alat untuk mulai membangun pipeline Anda."
 create = "Buat pipeline"
 editingUnsupported = "Menampilkan parameter alat ini untuk diedit belum didukung."
-moveDown = "Pindah ke bawah"
-moveUp = "Pindah ke atas"
+editSource = "Edit source"
 name = "Nama"
 namePlaceholder = "mis. Redaction sweep"
 noToolSettings = "Alat ini tidak memiliki pengaturan yang dapat dikonfigurasi."
-operations_one = "Operasi ({{count}})"
-operations_other = "Operasi ({{count}})"
 output = "Output"
-removeStep = "Hapus operasi"
 save = "Simpan perubahan"
 scheduleEvery = "Jalankan setiap"
-sources = "Sumber"
-sourcesLoading = "Memuat sumber..."
 trigger = "Trigger"
 triggerManual = "Hanya manual"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "hari"
 hours = "jam"
 minutes = "menit"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "Hapus \"{{name}}\"? Ini tidak dapat dibatalkan."
@@ -7868,6 +7922,37 @@ action = "Buat pipeline"
 connectSource = "Hubungkan sumber"
 description = "Buat pipeline pertama Anda: pilih sumber yang dijalankannya, rangkai operasi, dan pilih tempat output dituju."
 title = "Belum ada pipeline"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "Aktif"
@@ -7894,6 +7979,7 @@ paused = "Dijeda"
 
 [portal.pipelines.table]
 name = "Pipeline"
+open = "Open"
 sources = "Sumber"
 status = "Status"
 steps = "Langkah"
@@ -8785,6 +8871,7 @@ unused = "Tidak digunakan"
 
 [portal.sources.table]
 documents = "Dokumen"
+open = "Open"
 source = "Sumber"
 status = "Status"
 usedBy = "Kebijakan"
@@ -10130,6 +10217,7 @@ last = "Halaman terakhir"
 maintainRatio = "Alihkan pertahankan rasio aspek"
 next = "Halaman berikutnya"
 noSavedSigs = "Tidak ditemukan tanda tangan yang disimpan"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "Tanda Tangan Pribadi"
 previous = "Halaman sebelumnya"
 redo = "Ulangi"
@@ -10823,6 +10911,9 @@ pageFormatting = "Pemformatan Halaman"
 removal = "Penghapusan"
 signing = "Penandatanganan"
 verification = "Verifikasi"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "Tidak ada alat ditemukan"

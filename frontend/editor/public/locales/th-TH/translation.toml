@@ -2933,12 +2933,16 @@ text = "เพื่อให้สิทธิ์เหล่านี้ไม
 [chat.actions]
 copy = "คัดลอกข้อความ"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "ตัวเลือกเอเจนต์ของ Stirling"
+assistant = "AI Assistant"
 clearChat = "ล้างแชต"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "ดำเนินการต่อ"
 copied = "คัดลอกแล้ว!"
 copy = "คัดลอก"
 done = "เสร็จสิ้น"
+enterValue = "Enter value"
 error = "ข้อผิดพลาด"
 expand = "ขยาย"
 loading = "กำลังโหลด..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "ค้นหา..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "แก้ไข"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "บันทึกทั้งหมดแล้ว"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "ดึง CSV ไม่สำเร็จ"
 extractXlsxError = "ดึง XLSX ไม่สำเร็จ"
+filled = "filled"
 flattenAfterFilling = "ทำให้แบนหลังจากกรอก"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "จำเป็น"
 requiredFieldsError = "โปรดกรอกช่องที่จำเป็นทั้งหมด"
 rescanFields = "สแกนฟิลด์อีกครั้ง"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "ละเอียดอ่อน — ต้องมีสิ
 
 [portal.documents.table.columns]
 action = "Pipeline / การดำเนินการ"
+actions = "Actions"
 document = "เอกสาร"
 product = "ผลิตภัณฑ์"
 status = "สถานะ"
@@ -7275,6 +7290,41 @@ running = "กำลังทำงาน"
 description = "มุมมองนี้พบข้อผิดพลาดที่ไม่คาดคิด ลองอีกครั้ง หรือเลือกส่วนอื่นจากแถบด้านข้าง"
 retry = "ลองอีกครั้ง"
 title = "มีบางอย่างผิดพลาดในหน้านี้"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "กลับ"
@@ -7786,7 +7836,6 @@ title = "Pipelines"
 newPipeline = "Pipeline ใหม่"
 
 [portal.pipelines.builder]
-addStep = "เพิ่มเครื่องมือ"
 back = "กลับไปที่ pipelines"
 cannotFollow = "รับ {{produced}} ไม่ได้"
 chooseAccount = "เลือกบัญชี"
@@ -7799,23 +7848,23 @@ inputs = "อินพุต"
 inputSource = "แหล่งที่มาของอินพุต"
 inputTrigger = "Trigger"
 keepEditing = "แก้ไขต่อ"
+moreActions = "More actions"
 needsConfiguring = "ต้องตั้งค่า"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "ต้องมีไฟล์ที่อัปโหลด"
-noSources = "ยังไม่มีแหล่งที่มาเชื่อมต่อ สร้างแหล่งที่มาเพื่อใช้เป็นอินพุต"
 noToolMatches = "ไม่มีเครื่องมือที่ตรงกับการค้นหาของคุณ"
-pipelineSettings = "การตั้งค่า pipeline"
 searchTools = "ค้นหาเครื่องมือ"
-selectToolBody = "เพิ่มเครื่องมือเพื่อสร้าง pipeline ของคุณ"
-selectToolTitle = "ยังไม่มีเครื่องมือ"
 sendToSystem = "ส่งไปยังระบบอื่น"
 stepsIncompatible = "ขั้นตอนเหล่านี้ไม่สามารถทำงานกับผลลัพธ์จากขั้นตอนก่อนหน้าได้: {{tools}}"
 stepsNeedSetup = "ขั้นตอนเหล่านี้ยังต้องตั้งค่าก่อนบันทึก: {{tools}}"
-toolSettings = "การตั้งค่าเครื่องมือ"
+testRun = "Test with a file"
 unknownStep = "การดำเนินการที่ไม่รู้จัก เก็บไว้ตามเดิม"
 unsavedBody = "คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก บันทึกก่อนออก หรือจะละทิ้ง?"
 unsavedTitle = "การเปลี่ยนแปลงที่ยังไม่ได้บันทึก"
 uploadUnsupported = "ไฟล์ที่อัปโหลดยังไม่รองรับใน pipelines ดังนั้นขั้นตอนเหล่านี้จึงไม่สามารถบันทึกได้: {{tools}}"
 usesDefaults = "ทำงานด้วยการตั้งค่าเริ่มต้น"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "รวมทุกไฟล์จากขั้นตอนก่อนหน้า"
@@ -7828,29 +7877,34 @@ undeclared-operation = "ตรวจสอบไม่ได้ว่าขั�
 [portal.pipelines.composer]
 addTool = "เพิ่มเครื่องมือ"
 cancel = "ยกเลิก"
-chainEmpty = "เพิ่มเครื่องมือเพื่อเริ่มสร้าง pipeline ของคุณ"
 create = "สร้าง pipeline"
 editingUnsupported = "ยังไม่รองรับการแสดง params ของเครื่องมือเหล่านี้เพื่อแก้ไข"
-moveDown = "ย้ายลง"
-moveUp = "ย้ายขึ้น"
+editSource = "Edit source"
 name = "ชื่อ"
 namePlaceholder = "เช่น Redaction sweep"
 noToolSettings = "เครื่องมือนี้ไม่มีการตั้งค่าที่กำหนดค่าได้"
-operations_one = "การดำเนินการ ({{count}})"
-operations_other = "การดำเนินการ ({{count}})"
 output = "ผลลัพธ์"
-removeStep = "ลบการดำเนินการ"
 save = "บันทึกการเปลี่ยนแปลง"
 scheduleEvery = "รันทุก"
-sources = "แหล่งที่มา"
-sourcesLoading = "กำลังโหลดแหล่งที่มา..."
 trigger = "Trigger"
 triggerManual = "Manual เท่านั้น"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "วัน"
 hours = "ชั่วโมง"
 minutes = "นาที"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "ลบ \"{{name}}\" หรือไม่? การดำเนินการนี้ย้อนกลับไม่ได้"
@@ -7868,6 +7922,37 @@ action = "สร้าง pipeline"
 connectSource = "เชื่อมต่อแหล่งที่มา"
 description = "สร้าง pipeline แรกของคุณ: เลือกแหล่งที่มาที่จะรัน เชื่อมโยงการดำเนินการ และเลือกตำแหน่งผลลัพธ์"
 title = "ยังไม่มี pipelines"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "ใช้งานอยู่"
@@ -7894,6 +7979,7 @@ paused = "หยุดชั่วคราว"
 
 [portal.pipelines.table]
 name = "Pipeline"
+open = "Open"
 sources = "แหล่งที่มา"
 status = "สถานะ"
 steps = "ขั้นตอน"
@@ -8785,6 +8871,7 @@ unused = "ไม่ได้ใช้งาน"
 
 [portal.sources.table]
 documents = "เอกสาร"
+open = "Open"
 source = "แหล่งที่มา"
 status = "สถานะ"
 usedBy = "นโยบาย"
@@ -10130,6 +10217,7 @@ last = "หน้าสุดท้าย"
 maintainRatio = "สลับคงอัตราส่วนภาพ"
 next = "หน้าถัดไป"
 noSavedSigs = "ไม่พบลายเซ็นที่บันทึกไว้"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "ลายเซ็นส่วนตัว"
 previous = "หน้าก่อนหน้า"
 redo = "ทำซ้ำ"
@@ -10823,6 +10911,9 @@ pageFormatting = "การจัดรูปแบบหน้า"
 removal = "การลบ"
 signing = "การลงนาม"
 verification = "การตรวจสอบ"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "ไม่พบเครื่องมือ"

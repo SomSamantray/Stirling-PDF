@@ -2933,12 +2933,16 @@ text = "За да направите тези разрешения непром�
 [chat.actions]
 copy = "Копирайте съобщение"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Опции на агента Stirling"
+assistant = "AI Assistant"
 clearChat = "Изчистете чата"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "Продължи"
 copied = "Копирано!"
 copy = "Копирай"
 done = "Готово"
+enterValue = "Enter value"
 error = "Грешка"
 expand = "Разгъни"
 loading = "Зареждане..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "Търсене..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "Редактиране"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "Всичко е запазено"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "Неуспешно извличане на CSV"
 extractXlsxError = "Неуспешно извличане на XLSX"
+filled = "filled"
 flattenAfterFilling = "Фиксиране след попълване"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "зад."
 requiredFieldsError = "Моля, попълнете всички задължителни полета"
 rescanFields = "Пресканирайте полетата"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "Чувствителен — необходим е достъ�
 
 [portal.documents.table.columns]
 action = "Pipeline / Действие"
+actions = "Actions"
 document = "Документ"
 product = "Продукт"
 status = "Статус"
@@ -7275,6 +7290,41 @@ running = "Работи"
 description = "Този изглед срещна неочаквана грешка. Опитайте отново или изберете друга секция от страничната лента."
 retry = "Опитайте отново"
 title = "Нещо се обърка на тази страница"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "Назад"
@@ -7786,7 +7836,6 @@ title = "Pipelines"
 newPipeline = "Нов pipeline"
 
 [portal.pipelines.builder]
-addStep = "Добави инструмент"
 back = "Назад към pipelines"
 cannotFollow = "Не може да приеме {{produced}}"
 chooseAccount = "Изберете акаунт"
@@ -7799,23 +7848,23 @@ inputs = "Вход"
 inputSource = "Входен източник"
 inputTrigger = "Тригер"
 keepEditing = "Продължи редактирането"
+moreActions = "More actions"
 needsConfiguring = "Нуждае се от настройка"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "Нуждае се от качен файл"
-noSources = "Все още няма свързани източници. Създайте такъв, за да го използвате като вход."
 noToolMatches = "Няма инструменти, отговарящи на търсенето ви."
-pipelineSettings = "Настройки на pipeline"
 searchTools = "Търсене на инструменти"
-selectToolBody = "Добавете инструмент, за да изградите вашия pipeline."
-selectToolTitle = "Все още няма инструменти"
 sendToSystem = "Изпращане към друга система"
 stepsIncompatible = "Тези стъпки не могат да се изпълнят върху това, което произвежда предишната им стъпка: {{tools}}."
 stepsNeedSetup = "Тези стъпки все още трябва да бъдат настроени преди запазване: {{tools}}."
-toolSettings = "Настройки на инструмента"
+testRun = "Test with a file"
 unknownStep = "Неразпозната операция, запазена както е."
 unsavedBody = "Имате незапазени промени. Запазете ги преди да напуснете или ги отхвърлете?"
 unsavedTitle = "Незапазени промени"
 uploadUnsupported = "Качените файлове все още не се поддържат в pipelines, затова тези стъпки не могат да бъдат запазени: {{tools}}."
 usesDefaults = "Изпълнява се с настройки по подразбиране"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "Комбинира всеки файл от предишната стъпка"
@@ -7828,29 +7877,34 @@ undeclared-operation = "Не може да се провери какво при
 [portal.pipelines.composer]
 addTool = "Добави инструмент"
 cancel = "Отказ"
-chainEmpty = "Добавете инструмент, за да започнете да изграждате вашия pipeline."
 create = "Създай pipeline"
 editingUnsupported = "Показването на тези параметри на инструмента за редактиране все още не се поддържа."
-moveDown = "Премести надолу"
-moveUp = "Премести нагоре"
+editSource = "Edit source"
 name = "Име"
 namePlaceholder = "напр. Redaction sweep"
 noToolSettings = "Този инструмент няма конфигурируеми настройки."
-operations_one = "Операция ({{count}})"
-operations_other = "Операции ({{count}})"
 output = "Изход"
-removeStep = "Премахни операция"
 save = "Запази промените"
 scheduleEvery = "Изпълнявай на всеки"
-sources = "Източници"
-sourcesLoading = "Зареждане на източници..."
 trigger = "Trigger"
 triggerManual = "Само ръчно"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "дни"
 hours = "часа"
 minutes = "минути"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "Да се изтрие ли \"{{name}}\"? Това не може да бъде отменено."
@@ -7868,6 +7922,37 @@ action = "Създай pipeline"
 connectSource = "Свързване на източник"
 description = "Създайте първия си pipeline: изберете източниците, върху които се изпълнява, свържете операциите и изберете къде да отива изходът."
 title = "Все още няма pipelines"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "Активни"
@@ -7894,6 +7979,7 @@ paused = "На пауза"
 
 [portal.pipelines.table]
 name = "Pipeline"
+open = "Open"
 sources = "Източници"
 status = "Статус"
 steps = "Стъпки"
@@ -8785,6 +8871,7 @@ unused = "Неизползван"
 
 [portal.sources.table]
 documents = "Документи"
+open = "Open"
 source = "Източник"
 status = "Статус"
 usedBy = "Политики"
@@ -10130,6 +10217,7 @@ last = "Последна страница"
 maintainRatio = "Превключване за поддържане на съотношението на страните"
 next = "Следваща страница"
 noSavedSigs = "Не са намерени запазени подписи"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "Лични подписи"
 previous = "Предишна стараница"
 redo = "Повтори"
@@ -10823,6 +10911,9 @@ pageFormatting = "Форматиране на страници"
 removal = "Премахване"
 signing = "Подписване"
 verification = "Проверка"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "Няма намерени инструменти"

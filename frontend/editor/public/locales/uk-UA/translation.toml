@@ -2933,12 +2933,16 @@ text = "Щоб зробити ці дозволи незмінними, скор
 [chat.actions]
 copy = "Копіювати повідомлення"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Параметри агента Stirling"
+assistant = "AI Assistant"
 clearChat = "Очистити чат"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "Продовжити"
 copied = "Скопійовано!"
 copy = "Копіювати"
 done = "Готово"
+enterValue = "Enter value"
 error = "Помилка"
 expand = "Розгорнути"
 loading = "Завантаження..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "Пошук..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "Редагувати"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "Усе збережено"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "Не вдалося витягти CSV"
 extractXlsxError = "Не вдалося витягти XLSX"
+filled = "filled"
 flattenAfterFilling = "Сплющити після заповнення"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "обов."
 requiredFieldsError = "Заповніть усі обов’язкові поля"
 rescanFields = "Повторно сканувати поля"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "Конфіденційно — потрібен доступ"
 
 [portal.documents.table.columns]
 action = "Конвеєр / Дія"
+actions = "Actions"
 document = "Документ"
 product = "Продукт"
 status = "Статус"
@@ -7275,6 +7290,41 @@ running = "Працює"
 description = "У цьому поданні сталася неочікувана помилка. Спробуйте ще раз або виберіть інший розділ на бічній панелі."
 retry = "Спробувати ще раз"
 title = "На цій сторінці щось пішло не так"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "Назад"
@@ -7786,7 +7836,6 @@ title = "Конвеєри"
 newPipeline = "Новий конвеєр"
 
 [portal.pipelines.builder]
-addStep = "Додати інструмент"
 back = "Назад до конвеєрів"
 cannotFollow = "Не можна прийняти {{produced}}"
 chooseAccount = "Виберіть обліковий запис"
@@ -7799,23 +7848,23 @@ inputs = "Вхідні дані"
 inputSource = "Вхідне джерело"
 inputTrigger = "Тригер"
 keepEditing = "Продовжити редагування"
+moreActions = "More actions"
 needsConfiguring = "Потрібне налаштування"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "Потрібен завантажений файл"
-noSources = "Поки що немає підключених джерел. Створіть одне, щоб використовувати його як вхід."
 noToolMatches = "Жоден інструмент не відповідає вашому пошуку."
-pipelineSettings = "Налаштування конвеєра"
 searchTools = "Пошук інструментів"
-selectToolBody = "Додайте інструмент, щоб створити конвеєр."
-selectToolTitle = "Інструментів ще немає"
 sendToSystem = "Надіслати до іншої системи"
 stepsIncompatible = "Ці кроки не можуть працювати з тим, що створює попередній крок: {{tools}}."
 stepsNeedSetup = "Ці кроки все ще потрібно налаштувати перед збереженням: {{tools}}."
-toolSettings = "Налаштування інструмента"
+testRun = "Test with a file"
 unknownStep = "Нерозпізнана операція, залишено як є."
 unsavedBody = "У вас є незбережені зміни. Зберегти їх перед виходом чи відхилити?"
 unsavedTitle = "Незбережені зміни"
 uploadUnsupported = "Завантажені файли поки не підтримуються в конвеєрах, тому ці кроки не можна зберегти: {{tools}}."
 usesDefaults = "Запускається з типовими налаштуваннями"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "Об'єднує кожен файл із попереднього кроку"
@@ -7828,29 +7877,34 @@ undeclared-operation = "Не вдається перевірити, що при�
 [portal.pipelines.composer]
 addTool = "Додати інструмент"
 cancel = "Скасувати"
-chainEmpty = "Додайте інструмент, щоб почати створювати конвеєр."
 create = "Створити конвеєр"
 editingUnsupported = "Відображення цих параметрів інструмента для редагування поки не підтримується."
-moveDown = "Перемістити вниз"
-moveUp = "Перемістити вгору"
+editSource = "Edit source"
 name = "Назва"
 namePlaceholder = "напр. Redaction sweep"
 noToolSettings = "Цей інструмент не має налаштовуваних параметрів."
-operations_one = "Операція ({{count}})"
-operations_other = "Операції ({{count}})"
 output = "Вивід"
-removeStep = "Вилучити операцію"
 save = "Зберегти зміни"
 scheduleEvery = "Запускати кожні"
-sources = "Джерела"
-sourcesLoading = "Завантаження джерел..."
 trigger = "Тригер"
 triggerManual = "Лише вручну"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "днів"
 hours = "годин"
 minutes = "хвилин"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "Видалити \"{{name}}\"? Цю дію не можна скасувати."
@@ -7868,6 +7922,37 @@ action = "Створити конвеєр"
 connectSource = "Підключити джерело"
 description = "Створіть свій перший конвеєр: виберіть джерела, для яких він запускається, з’єднайте операції та виберіть, куди надходитиме вивід."
 title = "Конвеєрів ще немає"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "Активні"
@@ -7894,6 +7979,7 @@ paused = "Призупинений"
 
 [portal.pipelines.table]
 name = "Конвеєр"
+open = "Open"
 sources = "Джерела"
 status = "Статус"
 steps = "Кроки"
@@ -8785,6 +8871,7 @@ unused = "Не використовується"
 
 [portal.sources.table]
 documents = "Документи"
+open = "Open"
 source = "Джерело"
 status = "Статус"
 usedBy = "Політики"
@@ -10130,6 +10217,7 @@ last = "Остання сторінка"
 maintainRatio = "Переключити збереження пропорцій"
 next = "Наступна сторінка"
 noSavedSigs = "Збережені підписи не знайдено"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "Особисті підписи"
 previous = "Попередня сторінка"
 redo = "Повторити"
@@ -10823,6 +10911,9 @@ pageFormatting = "Форматування сторінок"
 removal = "Видалення"
 signing = "Підписання"
 verification = "Перевірка"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "Інструментів не знайдено"

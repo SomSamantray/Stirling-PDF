@@ -2933,12 +2933,16 @@ text = "Để các quyền này không bị thay đổi, hãy dùng công cụ T
 [chat.actions]
 copy = "Sao chép tin nhắn"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Tùy chọn tác nhân Stirling"
+assistant = "AI Assistant"
 clearChat = "Xóa trò chuyện"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "Tiếp tục"
 copied = "Đã sao chép!"
 copy = "Sao chép"
 done = "Xong"
+enterValue = "Enter value"
 error = "Lỗi"
 expand = "Mở rộng"
 loading = "Đang tải..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "Tìm kiếm..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "Sửa"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "Đã lưu tất cả"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "Không thể trích xuất CSV"
 extractXlsxError = "Không thể trích xuất XLSX"
+filled = "filled"
 flattenAfterFilling = "Làm phẳng sau khi điền"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "bắt buộc"
 requiredFieldsError = "Vui lòng điền tất cả các trường bắt buộc"
 rescanFields = "Quét lại trường"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "Nhạy cảm — yêu cầu quyền truy cập"
 
 [portal.documents.table.columns]
 action = "Pipeline / Hành động"
+actions = "Actions"
 document = "Tài liệu"
 product = "Sản phẩm"
 status = "Trạng thái"
@@ -7275,6 +7290,41 @@ running = "Đang chạy"
 description = "Chế độ xem này gặp lỗi không mong muốn. Hãy thử lại hoặc chọn phần khác từ thanh bên."
 retry = "Thử lại"
 title = "Đã xảy ra lỗi trên trang này"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "Quay lại"
@@ -7786,7 +7836,6 @@ title = "Pipeline"
 newPipeline = "Pipeline mới"
 
 [portal.pipelines.builder]
-addStep = "Thêm công cụ"
 back = "Quay lại pipeline"
 cannotFollow = "Không thể nhận {{produced}}"
 chooseAccount = "Chọn tài khoản"
@@ -7799,23 +7848,23 @@ inputs = "Đầu vào"
 inputSource = "Nguồn đầu vào"
 inputTrigger = "Kích hoạt"
 keepEditing = "Tiếp tục chỉnh sửa"
+moreActions = "More actions"
 needsConfiguring = "Cần thiết lập"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "Cần một file đã upload"
-noSources = "Chưa có nguồn nào được kết nối. Tạo một nguồn để dùng làm đầu vào."
 noToolMatches = "Không có công cụ nào khớp với tìm kiếm của bạn."
-pipelineSettings = "Cài đặt pipeline"
 searchTools = "Tìm kiếm công cụ"
-selectToolBody = "Thêm công cụ để xây dựng pipeline của bạn."
-selectToolTitle = "Chưa có công cụ"
 sendToSystem = "Gửi đến hệ thống khác"
 stepsIncompatible = "Các bước này không thể chạy trên kết quả mà bước trước tạo ra: {{tools}}."
 stepsNeedSetup = "Các bước này vẫn cần thiết lập trước khi lưu: {{tools}}."
-toolSettings = "Cài đặt công cụ"
+testRun = "Test with a file"
 unknownStep = "Thao tác không được nhận dạng, giữ nguyên."
 unsavedBody = "Bạn có thay đổi chưa lưu. Lưu trước khi rời đi hay hủy chúng?"
 unsavedTitle = "Thay đổi chưa lưu"
 uploadUnsupported = "File đã upload chưa được hỗ trợ trong pipeline, vì vậy không thể lưu các bước này: {{tools}}."
 usesDefaults = "Chạy với cài đặt mặc định"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "Kết hợp mọi file từ bước trước"
@@ -7828,29 +7877,34 @@ undeclared-operation = "Không thể kiểm tra bước này chấp nhận gì"
 [portal.pipelines.composer]
 addTool = "Thêm công cụ"
 cancel = "Hủy"
-chainEmpty = "Thêm công cụ để bắt đầu xây dựng pipeline của bạn."
 create = "Tạo pipeline"
 editingUnsupported = "Chưa hỗ trợ hiển thị các tham số công cụ này để chỉnh sửa."
-moveDown = "Di chuyển xuống"
-moveUp = "Di chuyển lên"
+editSource = "Edit source"
 name = "Tên"
 namePlaceholder = "ví dụ: Quét che giấu"
 noToolSettings = "Công cụ này không có cài đặt có thể cấu hình."
-operations_one = "Thao tác ({{count}})"
-operations_other = "Thao tác ({{count}})"
 output = "Đầu ra"
-removeStep = "Xóa thao tác"
 save = "Lưu thay đổi"
 scheduleEvery = "Chạy mỗi"
-sources = "Nguồn"
-sourcesLoading = "Đang tải nguồn..."
 trigger = "Trigger"
 triggerManual = "Chỉ thủ công"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "ngày"
 hours = "giờ"
 minutes = "phút"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "Xóa \"{{name}}\"? Không thể hoàn tác thao tác này."
@@ -7868,6 +7922,37 @@ action = "Tạo pipeline"
 connectSource = "Kết nối một nguồn"
 description = "Tạo pipeline đầu tiên của bạn: chọn các nguồn mà nó chạy, nối chuỗi các thao tác và chọn nơi đầu ra sẽ đến."
 title = "Chưa có pipeline"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "Đang hoạt động"
@@ -7894,6 +7979,7 @@ paused = "Đã tạm dừng"
 
 [portal.pipelines.table]
 name = "Pipeline"
+open = "Open"
 sources = "Nguồn"
 status = "Trạng thái"
 steps = "Bước"
@@ -8785,6 +8871,7 @@ unused = "Chưa dùng"
 
 [portal.sources.table]
 documents = "Tài liệu"
+open = "Open"
 source = "Nguồn"
 status = "Trạng thái"
 usedBy = "Chính sách"
@@ -10130,6 +10217,7 @@ last = "Trang cuối"
 maintainRatio = "Bật/tắt giữ tỉ lệ khung hình"
 next = "Trang tiếp"
 noSavedSigs = "Không tìm thấy chữ ký đã lưu"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "Chữ ký cá nhân"
 previous = "Trang trước"
 redo = "Làm lại"
@@ -10823,6 +10911,9 @@ pageFormatting = "Định dạng trang"
 removal = "Loại bỏ"
 signing = "Ký"
 verification = "Xác minh"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "Không tìm thấy công cụ nào"

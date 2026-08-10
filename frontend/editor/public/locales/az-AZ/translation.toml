@@ -2933,12 +2933,16 @@ text = "Bu icazələri dəyişdirilməz etmək üçün, Parol əlavə etmə alə
 [chat.actions]
 copy = "Mesajı kopyala"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Stirling agent seçimləri"
+assistant = "AI Assistant"
 clearChat = "Söhbəti təmizlə"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "Davam et"
 copied = "Kopyalandı!"
 copy = "Kopyala"
 done = "Bitdi"
+enterValue = "Enter value"
 error = "Xəta"
 expand = "Genişləndir"
 loading = "Yüklənir..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "Axtar..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "Redaktə et"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "Hamısı saxlanıldı"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "CSV çıxarmaq alınmadı"
 extractXlsxError = "XLSX çıxarmaq alınmadı"
+filled = "filled"
 flattenAfterFilling = "Doldurduqdan sonra yastılaşdır"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "təl."
 requiredFieldsError = "Bütün tələb olunan sahələri doldurun"
 rescanFields = "Sahələri yenidən skan et"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "Həssas — giriş tələb olunur"
 
 [portal.documents.table.columns]
 action = "Pipeline / Əməliyyat"
+actions = "Actions"
 document = "Sənəd"
 product = "Məhsul"
 status = "Status"
@@ -7275,6 +7290,41 @@ running = "İşləyir"
 description = "Bu görünüşdə gözlənilməz xəta baş verdi. Yenidən cəhd edin və ya yan paneldən başqa bölmə seçin."
 retry = "Yenidən cəhd et"
 title = "Bu səhifədə nəsə səhv getdi"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "Geri"
@@ -7786,7 +7836,6 @@ title = "Pipeline-lar"
 newPipeline = "Yeni pipeline"
 
 [portal.pipelines.builder]
-addStep = "Alət əlavə et"
 back = "Pipeline-lara qayıt"
 cannotFollow = "{{produced}} qəbul edə bilmir"
 chooseAccount = "Hesab seçin"
@@ -7799,23 +7848,23 @@ inputs = "Giriş"
 inputSource = "Giriş mənbəyi"
 inputTrigger = "Trigger"
 keepEditing = "Redaktəyə davam et"
+moreActions = "More actions"
 needsConfiguring = "Quraşdırma tələb olunur"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "Yüklənmiş fayl tələb olunur"
-noSources = "Hələ heç bir mənbə qoşulmayıb. Onu giriş kimi istifadə etmək üçün birini yaradın."
 noToolMatches = "Axtarışınıza uyğun alət yoxdur."
-pipelineSettings = "Pipeline parametrləri"
 searchTools = "Alətləri axtar"
-selectToolBody = "Pipeline qurmaq üçün alət əlavə edin."
-selectToolTitle = "Hələ alət yoxdur"
 sendToSystem = "Başqa sistemə göndər"
 stepsIncompatible = "Bu addımlar əvvəlki addımın yaratdığı ilə işləyə bilmir: {{tools}}."
 stepsNeedSetup = "Saxlamadan əvvəl bu addımların hələ quraşdırılması lazımdır: {{tools}}."
-toolSettings = "Alət parametrləri"
+testRun = "Test with a file"
 unknownStep = "Tanınmayan əməliyyat, olduğu kimi saxlanıldı."
 unsavedBody = "Saxlanmamış dəyişiklikləriniz var. Çıxmadan əvvəl onları saxlayırsınız, yoxsa atırsınız?"
 unsavedTitle = "Saxlanmamış dəyişikliklər"
 uploadUnsupported = "Yüklənmiş fayllar hələ pipeline-larda dəstəklənmir, buna görə bu addımlar saxlanıla bilməz: {{tools}}."
 usesDefaults = "Standart parametrlərlə işləyir"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "Əvvəlki addımdan bütün faylları birləşdirir"
@@ -7828,29 +7877,34 @@ undeclared-operation = "Bu addımın nə qəbul etdiyini yoxlamaq olmur"
 [portal.pipelines.composer]
 addTool = "Alət əlavə et"
 cancel = "Ləğv et"
-chainEmpty = "Pipeline qurmağa başlamaq üçün alət əlavə edin."
 create = "Pipeline yarat"
 editingUnsupported = "Bu alət parametrlərinin redaktə üçün göstərilməsi hələ dəstəklənmir."
-moveDown = "Aşağı köçür"
-moveUp = "Yuxarı köçür"
+editSource = "Edit source"
 name = "Ad"
 namePlaceholder = "məs. Redaction sweep"
 noToolSettings = "Bu alətin konfiqurasiya edilə bilən parametri yoxdur."
-operations_one = "Əməliyyat ({{count}})"
-operations_other = "Əməliyyatlar ({{count}})"
 output = "Çıxış"
-removeStep = "Əməliyyatı sil"
 save = "Dəyişiklikləri saxla"
 scheduleEvery = "Hər"
-sources = "Mənbələr"
-sourcesLoading = "Mənbələr yüklənir..."
 trigger = "Trigger"
 triggerManual = "Yalnız manual"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "gün"
 hours = "saat"
 minutes = "dəqiqə"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "\"{{name}}\" pipeline-ı silinsin? Bu əməliyyat geri qaytarıla bilməz."
@@ -7868,6 +7922,37 @@ action = "Pipeline yarat"
 connectSource = "Mənbə qoş"
 description = "İlk pipeline-ınızı yaradın: işləyəcəyi mənbələri seçin, əməliyyatları zəncirləyin və çıxışın hara gedəcəyini seçin."
 title = "Hələ pipeline yoxdur"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "Aktiv"
@@ -7894,6 +7979,7 @@ paused = "Dayandırılıb"
 
 [portal.pipelines.table]
 name = "Pipeline"
+open = "Open"
 sources = "Mənbələr"
 status = "Status"
 steps = "Addımlar"
@@ -8785,6 +8871,7 @@ unused = "İstifadə olunmur"
 
 [portal.sources.table]
 documents = "Sənədlər"
+open = "Open"
 source = "Mənbə"
 status = "Status"
 usedBy = "Siyasətlər"
@@ -10130,6 +10217,7 @@ last = "Son səhifə"
 maintainRatio = "Nisbətin qorunmasını dəyiş"
 next = "Növbəti səhifə"
 noSavedSigs = "Saxlanmış imza tapılmadı"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "Şəxsi İmzalar"
 previous = "Əvvəlki səhifə"
 redo = "Yenidən et"
@@ -10823,6 +10911,9 @@ pageFormatting = "Səhifə Formatlama"
 removal = "Silmə"
 signing = "İmzalama"
 verification = "Yoxlama"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "Heç bir alət tapılmadı"

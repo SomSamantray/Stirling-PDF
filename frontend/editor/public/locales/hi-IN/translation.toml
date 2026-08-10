@@ -2933,12 +2933,16 @@ text = "इन अनुमतियों को अपरिवर्तनी
 [chat.actions]
 copy = "संदेश कॉपी करें"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Stirling एजेंट विकल्प"
+assistant = "AI Assistant"
 clearChat = "चैट साफ़ करें"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "जारी रखें"
 copied = "कॉपी हो गया!"
 copy = "कॉपी करें"
 done = "पूर्ण"
+enterValue = "Enter value"
 error = "त्रुटि"
 expand = "विस्तारित करें"
 loading = "लोड हो रहा है..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "खोजें..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "संपादित करें"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "सब सहेजा गया"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "CSV extract करने में विफल"
 extractXlsxError = "XLSX extract करने में विफल"
+filled = "filled"
 flattenAfterFilling = "भरने के बाद समतल करें"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "आव."
 requiredFieldsError = "कृपया सभी आवश्यक fields भरें"
 rescanFields = "फ़ील्ड्स दोबारा स्कैन करें"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "संवेदनशील — एक्सेस आवश�
 
 [portal.documents.table.columns]
 action = "पाइपलाइन / कार्रवाई"
+actions = "Actions"
 document = "दस्तावेज़"
 product = "उत्पाद"
 status = "स्थिति"
@@ -7275,6 +7290,41 @@ running = "चल रहा है"
 description = "इस व्यू में अनपेक्षित त्रुटि हुई। फिर से कोशिश करें, या sidebar से कोई अन्य अनुभाग चुनें।"
 retry = "फिर से कोशिश करें"
 title = "इस पेज पर कुछ गलत हो गया"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "वापस"
@@ -7786,7 +7836,6 @@ title = "पाइपलाइन्स"
 newPipeline = "नई पाइपलाइन"
 
 [portal.pipelines.builder]
-addStep = "टूल जोड़ें"
 back = "पाइपलाइन्स पर वापस जाएँ"
 cannotFollow = "{{produced}} नहीं ले सकता"
 chooseAccount = "एक खाता चुनें"
@@ -7799,23 +7848,23 @@ inputs = "इनपुट"
 inputSource = "इनपुट स्रोत"
 inputTrigger = "ट्रिगर"
 keepEditing = "संपादन जारी रखें"
+moreActions = "More actions"
 needsConfiguring = "सेटअप आवश्यक है"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "अपलोड की गई फ़ाइल आवश्यक"
-noSources = "अभी तक कोई स्रोत कनेक्ट नहीं है। इसे इनपुट के रूप में उपयोग करने के लिए एक बनाएँ।"
 noToolMatches = "आपकी खोज से कोई टूल मेल नहीं खाते।"
-pipelineSettings = "पाइपलाइन सेटिंग्स"
 searchTools = "टूल खोजें"
-selectToolBody = "अपनी पाइपलाइन बनाने के लिए एक टूल जोड़ें।"
-selectToolTitle = "अभी कोई टूल नहीं"
 sendToSystem = "दूसरे सिस्टम को भेजें"
 stepsIncompatible = "ये चरण उनके पिछले चरण द्वारा उत्पन्न चीज़ पर नहीं चल सकते: {{tools}}।"
 stepsNeedSetup = "सेव करने से पहले इन चरणों का सेटअप अभी भी आवश्यक है: {{tools}}।"
-toolSettings = "टूल सेटिंग्स"
+testRun = "Test with a file"
 unknownStep = "अपरिचित operation, जैसा है वैसा रखा गया।"
 unsavedBody = "आपके पास unsaved बदलाव हैं। बाहर निकलने से पहले उन्हें save करें, या छोड़ दें?"
 unsavedTitle = "Unsaved बदलाव"
 uploadUnsupported = "Uploaded files अभी pipelines में supported नहीं हैं, इसलिए ये steps save नहीं किए जा सकते: {{tools}}."
 usesDefaults = "Default settings के साथ चलता है"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "पिछले चरण की हर फ़ाइल को जोड़ता है"
@@ -7828,29 +7877,34 @@ undeclared-operation = "जाँच नहीं कर सकता कि य
 [portal.pipelines.composer]
 addTool = "टूल जोड़ें"
 cancel = "रद्द करें"
-chainEmpty = "अपनी पाइपलाइन बनाना शुरू करने के लिए एक टूल जोड़ें।"
 create = "पाइपलाइन बनाएँ"
 editingUnsupported = "Editing के लिए इन tool params को दिखाना अभी supported नहीं है।"
-moveDown = "नीचे ले जाएँ"
-moveUp = "ऊपर ले जाएँ"
+editSource = "Edit source"
 name = "नाम"
 namePlaceholder = "उदा. Redaction sweep"
 noToolSettings = "इस टूल में कोई configurable settings नहीं हैं।"
-operations_one = "Operation ({{count}})"
-operations_other = "Operations ({{count}})"
 output = "Output"
-removeStep = "Operation हटाएँ"
 save = "बदलाव save करें"
 scheduleEvery = "हर"
-sources = "स्रोत"
-sourcesLoading = "स्रोत लोड हो रहे हैं..."
 trigger = "Trigger"
 triggerManual = "केवल Manual"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "दिन"
 hours = "घंटे"
 minutes = "मिनट"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "\"{{name}}\" हटाएँ? इसे पूर्ववत नहीं किया जा सकता।"
@@ -7868,6 +7922,37 @@ action = "पाइपलाइन बनाएँ"
 connectSource = "स्रोत कनेक्ट करें"
 description = "अपनी पहली पाइपलाइन बनाएँ: वे स्रोत चुनें जिन पर यह चलती है, operations को chain करें, और output कहाँ जाए चुनें।"
 title = "अभी कोई पाइपलाइन नहीं"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "सक्रिय"
@@ -7894,6 +7979,7 @@ paused = "रोकी गई"
 
 [portal.pipelines.table]
 name = "पाइपलाइन"
+open = "Open"
 sources = "स्रोत"
 status = "स्थिति"
 steps = "Steps"
@@ -8785,6 +8871,7 @@ unused = "Unused"
 
 [portal.sources.table]
 documents = "दस्तावेज़"
+open = "Open"
 source = "स्रोत"
 status = "स्थिति"
 usedBy = "Policies"
@@ -10130,6 +10217,7 @@ last = "अंतिम पृष्ठ"
 maintainRatio = "आनुपातिक अनुपात बनाए रखें टॉगल करें"
 next = "अगला पृष्ठ"
 noSavedSigs = "कोई सहेजा गया हस्ताक्षर नहीं मिला"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "व्यक्तिगत हस्ताक्षर"
 previous = "पिछला पृष्ठ"
 redo = "फिर करें"
@@ -10823,6 +10911,9 @@ pageFormatting = "पेज फ़ॉर्मेटिंग"
 removal = "हटाना"
 signing = "हस्ताक्षर"
 verification = "सत्यापन"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "कोई टूल नहीं मिला"

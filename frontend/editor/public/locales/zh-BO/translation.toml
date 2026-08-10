@@ -2933,12 +2933,16 @@ text = "要使这些权限不可更改，请使用添加密码工具设置所有
 [chat.actions]
 copy = "复制消息"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Stirling 代理选项"
+assistant = "AI Assistant"
 clearChat = "清空聊天"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "继续"
 copied = "已复制！"
 copy = "复制"
 done = "完成"
+enterValue = "Enter value"
 error = "错误"
 expand = "展开"
 loading = "正在加载..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "搜索..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "编辑"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "全部已保存"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "提取 CSV 失败"
 extractXlsxError = "提取 XLSX 失败"
+filled = "filled"
 flattenAfterFilling = "填写后扁平化"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "必填"
 requiredFieldsError = "请填写所有必填字段"
 rescanFields = "重新扫描字段"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "敏感 — 需要访问权限"
 
 [portal.documents.table.columns]
 action = "管道 / 操作"
+actions = "Actions"
 document = "文档"
 product = "产品"
 status = "状态"
@@ -7275,6 +7290,41 @@ running = "运行中"
 description = "此视图遇到意外错误。请重试，或从侧边栏选择其他部分。"
 retry = "重试"
 title = "此页面出现问题"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "返回"
@@ -7786,7 +7836,6 @@ title = "管道"
 newPipeline = "新建管道"
 
 [portal.pipelines.builder]
-addStep = "添加工具"
 back = "返回管道"
 cannotFollow = "无法接收 {{produced}}"
 chooseAccount = "选择一个账户"
@@ -7799,23 +7848,23 @@ inputs = "输入"
 inputSource = "输入来源"
 inputTrigger = "触发器"
 keepEditing = "继续编辑"
+moreActions = "More actions"
 needsConfiguring = "需要设置"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "需要上传的文件"
-noSources = "尚未连接来源。创建一个以将其用作输入。"
 noToolMatches = "没有工具匹配您的搜索。"
-pipelineSettings = "管道设置"
 searchTools = "搜索工具"
-selectToolBody = "添加工具以构建您的管道。"
-selectToolTitle = "尚无工具"
 sendToSystem = "发送到另一个系统"
 stepsIncompatible = "这些步骤无法在其上一步生成的内容上运行：{{tools}}。"
 stepsNeedSetup = "保存前这些步骤仍需要设置：{{tools}}。"
-toolSettings = "工具设置"
+testRun = "Test with a file"
 unknownStep = "无法识别的操作，已按原样保留。"
 unsavedBody = "您有未保存的更改。离开前保存，还是放弃？"
 unsavedTitle = "未保存的更改"
 uploadUnsupported = "管道尚不支持上传的文件，因此这些步骤无法保存：{{tools}}。"
 usesDefaults = "使用默认设置运行"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "合并上一步中的每个文件"
@@ -7828,29 +7877,34 @@ undeclared-operation = "无法检查此步骤接受的内容"
 [portal.pipelines.composer]
 addTool = "添加工具"
 cancel = "取消"
-chainEmpty = "添加工具以开始构建您的管道。"
 create = "创建管道"
 editingUnsupported = "尚不支持显示这些工具参数用于编辑。"
-moveDown = "下移"
-moveUp = "上移"
+editSource = "Edit source"
 name = "名称"
 namePlaceholder = "例如：修订扫描"
 noToolSettings = "此工具没有可配置的设置。"
-operations_one = "操作（{{count}}）"
-operations_other = "操作（{{count}}）"
 output = "输出"
-removeStep = "移除操作"
 save = "保存更改"
 scheduleEvery = "每隔"
-sources = "来源"
-sourcesLoading = "正在加载来源..."
 trigger = "触发器"
 triggerManual = "仅手动"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "天"
 hours = "小时"
 minutes = "分钟"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "删除 \"{{name}}\"？此操作无法撤销。"
@@ -7868,6 +7922,37 @@ action = "创建管道"
 connectSource = "连接来源"
 description = "创建您的第一个管道：选择运行的来源，串联操作，并选择输出位置。"
 title = "尚无管道"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "活跃"
@@ -7894,6 +7979,7 @@ paused = "已暂停"
 
 [portal.pipelines.table]
 name = "管道"
+open = "Open"
 sources = "来源"
 status = "状态"
 steps = "步骤"
@@ -8785,6 +8871,7 @@ unused = "未使用"
 
 [portal.sources.table]
 documents = "文档"
+open = "Open"
 source = "来源"
 status = "状态"
 usedBy = "政策"
@@ -10130,6 +10217,7 @@ last = "ཤོག་ངོས་མཐའ་མ།"
 maintainRatio = "བསྡུར་ཚད་རྒྱུན་འཁྱོངས་སྒོ་རྒྱག་པ།"
 next = "ཤོག་ངོས་རྗེས་མ།"
 noSavedSigs = "ཉར་ཚགས་བྱས་པའི་མིང་རྟགས་མ་རྙེད།"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "སྒེར་གྱི་མིང་རྟགས།"
 previous = "ཤོག་ངོས་སྔོན་མ།"
 redo = "重做"
@@ -10823,6 +10911,9 @@ pageFormatting = "页面格式化"
 removal = "移除"
 signing = "签名"
 verification = "验证"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "未找到工具"

@@ -2933,12 +2933,16 @@ text = "Para hacer estos permisos inmutables, usa la herramienta Agregar Contras
 [chat.actions]
 copy = "Copiar mensaje"
 
+[chat.emptyState]
+text = "Ask a question about your documents or get help with PDF tools."
+
 [chat.fab]
 close = "Close chat"
 open = "Open Stirling AI assistant"
 
 [chat.header]
 agentMenu = "Opciones del agente Stirling"
+assistant = "AI Assistant"
 clearChat = "Borrar chat"
 
 [chat.input]
@@ -3013,6 +3017,7 @@ continue = "Continuar"
 copied = "¡Copiado!"
 copy = "Copiar"
 done = "Hecho"
+enterValue = "Enter value"
 error = "Error"
 expand = "Expandir"
 loading = "Cargando..."
@@ -3565,7 +3570,11 @@ tags = "automation,folder,scanning,watch folder,hot folder,automatic processing,
 tags = "SSO,single sign-on,authentication,SAML,OAuth,OIDC,login,enterprise,identity provider,IdP"
 
 [dropdownList]
+noItems = "No items available"
+noResults = "No results found"
 searchPlaceholder = "Buscar..."
+selectLanguages = "Select languages"
+selectOption = "Select an option"
 
 [editableSecretField]
 edit = "Editar"
@@ -4241,9 +4250,14 @@ issues = "GitHub"
 
 [formFill]
 allSaved = "Todo guardado"
+analyzingFields = "Analysing form fields..."
 extractCsvError = "No se pudo extraer CSV"
 extractXlsxError = "No se pudo extraer XLSX"
+filled = "filled"
 flattenAfterFilling = "Aplanar después de rellenar"
+noFields = "No fillable form fields found in this PDF."
+placeholderEnter = "Enter"
+placeholderSelect = "Select"
 requiredAbbreviation = "oblig."
 requiredFieldsError = "Rellena todos los campos obligatorios"
 rescanFields = "Volver a escanear campos"
@@ -7186,6 +7200,7 @@ sensitiveTitle = "Sensible — se requiere acceso"
 
 [portal.documents.table.columns]
 action = "Pipeline / Acción"
+actions = "Actions"
 document = "Documento"
 product = "Producto"
 status = "Estado"
@@ -7275,6 +7290,41 @@ running = "En ejecución"
 description = "Esta vista ha encontrado un error inesperado. Inténtalo de nuevo o elige otra sección en la barra lateral."
 retry = "Intentarlo de nuevo"
 title = "Algo ha salido mal en esta página"
+
+[portal.failures]
+occurrences = "{{count}} occurrences"
+runReference = "Run {{runId}}"
+subtitle = "Failures recorded from your policy runs, with the actions you can take."
+title = "Failures"
+
+[portal.failures.action]
+acknowledge = "Acknowledge"
+confirm = "Are you sure?"
+dismiss = "Dismiss"
+dismissSkipFile = "Skip this file"
+
+[portal.failures.disabled]
+closed = "This failure is already closed."
+unavailable = "Not available for this failure."
+
+[portal.failures.empty]
+description = "Policy runs that fail will appear here with the actions you can take."
+title = "No failures recorded"
+
+[portal.failures.kind.inputPasswordProtected]
+description = "The pipeline could not open the document because it is password-protected. Unlock it and run it again, or skip this file."
+title = "Password-protected document"
+
+[portal.failures.kind.unknown]
+description = "This run failed for a reason Stirling does not yet recognise. The raw message is shown below."
+title = "Unrecognised failure"
+
+[portal.failures.stage]
+blocked = "Blocked"
+input = "Input"
+internal = "Internal"
+never_ran = "Never ran"
+output = "Output"
 
 [portal.home.download]
 back = "Atrás"
@@ -7786,7 +7836,6 @@ title = "Pipelines"
 newPipeline = "Nuevo pipeline"
 
 [portal.pipelines.builder]
-addStep = "Añadir herramienta"
 back = "Volver a pipelines"
 cannotFollow = "No puede tomar {{produced}}"
 chooseAccount = "Elige una cuenta"
@@ -7799,23 +7848,23 @@ inputs = "Entrada"
 inputSource = "Origen de entrada"
 inputTrigger = "Disparador"
 keepEditing = "Seguir editando"
+moreActions = "More actions"
 needsConfiguring = "Necesita configuración"
+needsDestination = "No destination chosen"
+needsSource = "No source chosen"
 needsUpload = "Necesita un archivo subido"
-noSources = "Aún no hay orígenes conectados. Crea uno para usarlo como entrada."
 noToolMatches = "Ninguna herramienta coincide con tu búsqueda."
-pipelineSettings = "Configuración del pipeline"
 searchTools = "Buscar herramientas"
-selectToolBody = "Añade una herramienta para crear tu pipeline."
-selectToolTitle = "Aún no hay herramientas"
 sendToSystem = "Enviar a otro sistema"
 stepsIncompatible = "Estos pasos no se pueden ejecutar sobre lo que produce su paso anterior: {{tools}}."
 stepsNeedSetup = "Estos pasos aún necesitan configuración antes de guardar: {{tools}}."
-toolSettings = "Configuración de la herramienta"
+testRun = "Test with a file"
 unknownStep = "Operación no reconocida, conservada tal cual."
 unsavedBody = "Tienes cambios sin guardar. ¿Guardarlos antes de salir o descartarlos?"
 unsavedTitle = "Cambios sin guardar"
 uploadUnsupported = "Los archivos subidos aún no son compatibles con pipelines, por lo que estos pasos no se pueden guardar: {{tools}}."
 usesDefaults = "Se ejecuta con la configuración predeterminada"
+viewDefinition = "View definition"
 
 [portal.pipelines.builder.diagnostic]
 fan-in = "Combina todos los archivos del paso anterior"
@@ -7828,29 +7877,34 @@ undeclared-operation = "No se puede comprobar qué acepta este paso"
 [portal.pipelines.composer]
 addTool = "Añadir herramienta"
 cancel = "Cancelar"
-chainEmpty = "Añade una herramienta para empezar a crear tu pipeline."
 create = "Crear pipeline"
 editingUnsupported = "Aún no se admite mostrar estos parámetros de herramienta para editarlos."
-moveDown = "Mover abajo"
-moveUp = "Mover arriba"
+editSource = "Edit source"
 name = "Nombre"
 namePlaceholder = "p. ej. Barrido de censura"
 noToolSettings = "Esta herramienta no tiene ajustes configurables."
-operations_one = "Operación ({{count}})"
-operations_other = "Operaciones ({{count}})"
 output = "Salida"
-removeStep = "Eliminar operación"
 save = "Guardar cambios"
 scheduleEvery = "Ejecutar cada"
-sources = "Orígenes"
-sourcesLoading = "Cargando orígenes..."
 trigger = "Desencadenador"
 triggerManual = "Solo manual"
+
+[portal.pipelines.composer.runsEvery]
+days_one = "Runs every day"
+days_other = "Runs every {{count}} days"
+hours_one = "Runs every hour"
+hours_other = "Runs every {{count}} hours"
+minutes_one = "Runs every minute"
+minutes_other = "Runs every {{count}} minutes"
 
 [portal.pipelines.composer.unit]
 days = "días"
 hours = "horas"
 minutes = "minutos"
+
+[portal.pipelines.definition]
+subtitle = "The pipeline as it would be saved."
+title = "Definition"
 
 [portal.pipelines.delete]
 body = "¿Eliminar \"{{name}}\"? Esta acción no se puede deshacer."
@@ -7868,6 +7922,37 @@ action = "Crear un pipeline"
 connectSource = "Conectar un origen"
 description = "Crea tu primer pipeline: elige los orígenes sobre los que se ejecuta, encadena las operaciones y elige dónde va la salida."
 title = "Aún no hay pipelines"
+
+[portal.pipelines.graph]
+addFirstTool = "Add a tool"
+dragHint = "Drop on a line to move it"
+insertHere = "Add a tool here"
+removeNode = "Remove {{name}}"
+showError = "Show why {{name}} failed"
+
+[portal.pipelines.graph.add]
+input = "Add a source"
+output = "Add a destination"
+
+[portal.pipelines.graph.run]
+done = "Done"
+failed = "Failed"
+running = "Running"
+
+[portal.pipelines.inspector]
+multipleBody = "Drag any of them onto a line to move them together, or press Delete to remove them."
+multipleSelected_one = "{{count}} step selected"
+multipleSelected_other = "{{count}} steps selected"
+noSelectionBody = "Pick a node in the graph to change what it does."
+noSelectionTitle = "Nothing selected"
+
+[portal.pipelines.inspector.status]
+completed_one = "Finished the only step"
+completed_other = "Finished all {{count}} steps"
+failed_one = "Failed on the only step"
+failed_other = "Failed after {{done}} of {{count}} steps"
+running_one = "Running the only step"
+running_other = "Running step {{done}} of {{count}}"
 
 [portal.pipelines.kpi]
 active = "Activos"
@@ -7894,6 +7979,7 @@ paused = "Pausado"
 
 [portal.pipelines.table]
 name = "Pipeline"
+open = "Open"
 sources = "Orígenes"
 status = "Estado"
 steps = "Pasos"
@@ -8785,6 +8871,7 @@ unused = "Sin usar"
 
 [portal.sources.table]
 documents = "Documentos"
+open = "Open"
 source = "Fuente"
 status = "Estado"
 usedBy = "Políticas"
@@ -10130,6 +10217,7 @@ last = "Última página"
 maintainRatio = "Activar/desactivar la relación de aspecto"
 next = "Siguiente página"
 noSavedSigs = "No se encontraron firmas guardadas"
+penSizePlaceholder = "Type or select pen size (1-200)"
 personalSigs = "Firmas Personales"
 previous = "Página anterior"
 redo = "Rehacer"
@@ -10823,6 +10911,9 @@ pageFormatting = "Formato de Página"
 removal = "Eliminación"
 signing = "Firma"
 verification = "Verificación"
+
+[toolRenderer]
+notFound = "Tool not found: {{tool}}"
 
 [tools]
 noSearchResults = "No se encontraron herramientas"
